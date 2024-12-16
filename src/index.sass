@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap')
+  
+$black: #201E20
+$primary: #EBFC17
+  
+*
+    margin: 0
+    padding: 0
+    border: 0
+    box-sizing: border-box
+    font-family: 'Mulish'
+    color: $black
+
+@mixin flexCenter($direction)
+    flex-direction: $direction
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin fontStyle($size, $weight)
+    font-size: $size
+    font-weight: $weight
+
+body
+    background-color: #FFF
+
+section
+    height: 100vh
+    width: 100%
+
+input:focus
+    outline: 0
+
+i
+    @include flexCenter(column)
+
+button
+    cursor: pointer
