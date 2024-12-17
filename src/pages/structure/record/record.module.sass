@@ -4,16 +4,32 @@
     width: 45%
     height: 100%
     padding: 1rem
-  
+    
+    .day_training
+        @include flexCenter(row, center)
+        gap: 1rem
+        padding: 2 rem 0
 
-    .title_training
-        width: 100%
+        button
+            padding: 1rem 
+            width: 7rem
+            @include fontStyle(16px, 800)
+            background-color: transparent
+            border: 1px solid #adb3bd
+            transition: .3s ease
+
+        button:hover
+            background-color: $black
+            border: 1px solid $black
+            color: white
+
+    .title_exercise
         text-align: start
         margin-bottom: .8rem
         h1
             @include fontStyle(1rem, 800 )
 
     .container_exercise
-        width: 100%
         @include flexCenter(column, start)
+        padding: .5rem
         gap: 1rem
