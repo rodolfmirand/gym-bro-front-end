@@ -1,10 +1,14 @@
 import './App.sass'
-import Login from "./pages/login/Login"
+import Account from './pages/account/routes'
+import Main from './pages/structure/routes'
+
+
 export default function App() {
 
   return (
     <>
-      <Login/>
+      <Account/>
+      <Main/>
     </>
   )
 }
