@@ -1,0 +1,42 @@
+
+.container_record
+    width: 45%
+    height: 100%
+    padding: 1rem
+
+    .section_title
+        padding-bottom: 1rem
+        @include fontStyle(20px, 800)
+
+    .container_options
+        width: 100%
+        @include flexCenter(row, space-between)
+        margin-bottom: 1rem
+        padding-right: .5rem
+
+        .exercise_type
+            display: flex
+            position: relative
+            gap: 1.5rem
+            padding: .5rem
+            border-radius: 8px
+
+            a
+                text-align: center
+                text-decoration: none
+                padding: 0rem .5rem
+                @include fontStyle(14px, 700)
+                position: relative
+                z-index: 1
+
+            a:hover
+                color: $primary
+
+            .indicator
+                position: absolute
+                bottom: 0%
+                left: 0
+                height: 3px
+                background-color: $primary
+                border-radius: 8px
+                z-index: 0

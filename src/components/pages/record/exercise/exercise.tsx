@@ -1,6 +1,6 @@
 import PopUpExercice from "../popup-menu/popup_menu";
 import style from "./exercise.module.sass";
-import Popup from 'reactjs-popup';
+
 
 export default function Exercise() {
   return (

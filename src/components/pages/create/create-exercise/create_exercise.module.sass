@@ -1,0 +1,41 @@
+.body_exercise
+    background-color: $gray_two
+    width: 100%
+    padding: .4rem
+    font-size: .8rem
+    border-radius: 6px
+
+    .muscleGroup_exercise
+        background-color: white
+        border-radius: 12px
+        box-shadow: 0 6px 12px #26214a38
+        padding: 1rem
+
+    .container_form
+        margin-top: 1.5rem
+        @extend .muscleGroup_exercise
+
+        form
+            display: flex
+            gap: 1.5rem
+            flex-direction: column
+            position: relative
+
+            .same_place
+                display: flex
+                gap: 1rem
+
+            button
+                background-color: $primary
+                padding: .8rem
+                width: 15rem
+                color: white
+                bottom: -40%
+                right: -3%
+                position: absolute
+                @include fontStyle(14px, 700)
+                text-transform: uppercase
+
+.text_exercise
+    margin-bottom: 12px
+    text-transform: uppercase

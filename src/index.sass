@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap')
 
+
 $black: #201E20
+$black_hover:#00000017
+    
+$gray_two: #F9F9F9
 $gray: #ADB3BD
-$primary: #EBFC17
+
+$primary: #FF004F
 
 *
     margin: 0
@@ -11,6 +16,7 @@ $primary: #EBFC17
     box-sizing: border-box
     font-family: 'Mulish'
     color: $black
+    user-select: none
 
 @mixin flexCenter($direction, $position)
     flex-direction: $direction
@@ -23,16 +29,14 @@ $primary: #EBFC17
     font-weight: $weight
 
 body
-    background-color: #FFF
+    background-color: white
     overflow: hidden
+ 
 
 section
     display: flex
     height: 100vh
     width: 100%
-
-input:focus
-    outline: 0
 
 i
     @include flexCenter(column, center)
@@ -41,3 +45,6 @@ button
     cursor: pointer
     border-radius: 6px
     background-color: transparent
+    
+a
+    text-decoration: none

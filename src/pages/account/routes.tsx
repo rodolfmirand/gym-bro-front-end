@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
 import styles from './account.module.sass'
 import Login from './login/login';
-import SingUp from './singup/singup';
+import Register from './register/register';
 
 function Body() {
   return (
@@ -19,7 +19,7 @@ export default function Account() {
       <Routes>
 
         <Route path='' element={<Body />}>
-          <Route path='singup' element={<SingUp />}/>
+          <Route path='register' element={<Register />}/>
           <Route path='login' element={<Login />}/>
         </Route>
 

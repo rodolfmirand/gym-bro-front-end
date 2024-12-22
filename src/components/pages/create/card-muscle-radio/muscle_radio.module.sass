@@ -1,0 +1,32 @@
+.card_radio
+    width: 8rem
+
+    input
+        display: none
+
+    label
+        position: relative
+        @include flexCenter(column-reverse, space-around)
+        align-items: start
+        border: 1px solid $gray
+        padding: .5rem 
+        border-radius: 8px  
+        cursor: pointer
+        transition: .3s ease
+
+        h4
+            text-align: end
+            text-transform: capitalize
+            width: 100%
+
+
+    label:hover
+        background-color: $black_hover
+
+    input:checked + label
+        background-color: #FF004F0c
+        border: 1px solid $primary
+        transform: scale(1.1)
+
+        h4
+            color: $primary

@@ -1,15 +1,12 @@
-import Exercise from "../../../components/exercise/exercise";
+import Exercise from "../../../components/pages/record/exercise/exercise";
+import GroupRoutine from "../../../components/pages/record/group-routine-ratio/group_exercise";
 import style from "./record.module.sass";
 
 export default function Record() {
   return (
     <>
       <div className={style.container_record}>
-        <div className={style.day_training}>
-          <button>A</button>
-          <button>B</button>
-          <button>C</button>
-        </div>
+        <GroupRoutine />
         <div className={style.title_exercise}>
           <h1>Treino A</h1>
         </div>
@@ -18,7 +15,6 @@ export default function Record() {
           <Exercise />
           <Exercise />
           <Exercise />
-         
         </div>
       </div>
     </>
