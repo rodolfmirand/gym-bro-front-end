@@ -1,18 +1,20 @@
 import style from "./muscle_radio.module.sass";
 
 interface MuscleRadioProps {
-  name: string; // O tipo pode ser ajustado com base no que 'a' realmente representa
+  name: string;
+  id: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const MuscleRadio: React.FC<MuscleRadioProps> = ({ name }) => {
+const MuscleRadio: React.FC<MuscleRadioProps> = ({ name, id, onChange}) => {
   return (
     <div className={style.card_radio}>
-      <input type="radio" id={`radio-${name}`} name="exercise-option" />
-      <label htmlFor={`radio-${name}`}>
+      <input type="radio" id={`radio-${id}`} name="exercise-option"  onChange={onChange} value={id}/>
+      <label htmlFor={`radio-${id}`}>
         <h4>{name}</h4>
         <img
-          src={`/assets/group-muscle/${name}.png`}
-          alt="Posterior View"
+          src={`/assets/group-muscle/${id}.png`}
+          alt=""
         />
       </label>
     </div>

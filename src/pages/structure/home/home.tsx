@@ -1,39 +1,24 @@
+import CardHome from "../../../components/pages/home/card_home/card_home";
 import style from "./home.module.sass";
+
+const menu = [
+  { link: "/record", text: "Seu treino" },
+  { link: "/exercise", text: "Montar exercicio" },
+  { link: "link3", text: "Lorem1" },
+  { link: "link4", text: "Lorem2" },
+];
 
 export default function Home() {
   return (
     <>
-    
-      <div className={style.container}>
+      <div className={style.container_home}>
+        <div className={style.title_home}>
+          <h1>HOME</h1>
+        </div>
         <div className={style.grid}>
-          <div className={style.item}>
-            <div className={style.img}></div>
-            <div className={style.text}>
-              <h2>Sua Ficha</h2>
-              <i className="fa-solid fa-angle-right"></i>
-            </div>
-          </div>
-          <div className={style.item}>
-            <div className={style.img}></div>
-            <div className={style.text}>
-              <h2>Exercicios</h2>
-              <i className="fa-solid fa-angle-right"></i>
-            </div>
-          </div>
-          <div className={style.item}>
-            <div className={style.img}></div>
-            <div className={style.text}>
-              <h2>Lorem</h2>
-              <i className="fa-solid fa-angle-right"></i>
-            </div>
-          </div>
-          <div className={style.item}>
-            <div className={style.img}></div>
-            <div className={style.text}>
-              <h2>Dicas</h2>
-              <i className="fa-solid fa-angle-right"></i>
-            </div>
-          </div>
+          {menu.map((item) => (
+            <CardHome key={item.link} link={item.link} text={item.text} />
+          ))}
         </div>
       </div>
     </>

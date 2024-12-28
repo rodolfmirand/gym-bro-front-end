@@ -1,0 +1,29 @@
+.routine_radio
+    width: 5rem
+
+    input
+        display: none
+
+    label
+        display: block
+        background-color: transparent
+        border: 1px solid $gray
+        @include fontStyle(16px, 800)
+        padding: .4rem
+        transition: .3s ease
+        cursor: pointer
+        border-radius: 6px
+        h4
+            text-align: center
+
+    label:hover
+        background-color: $black_hover
+
+
+    input:checked + label
+        background-color: $black
+        border: 1px solid $black
+        transform: scale(1.1)
+
+        h4
+            color: white

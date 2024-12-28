@@ -10,11 +10,14 @@
         padding: 1.875rem 3.75rem
         box-shadow: 0 24px 64px #26214a38
         z-index: 2
+
         .text_container
             width: 100%
             text-align: center
             margin-bottom: 1.5rem
-            @include fontStyle(20px, 900)
+
+            h1
+                @include fontStyle(42px, 900)
 
         form
             display: flex
@@ -24,17 +27,21 @@
         button
             background-color: $primary
             padding: .8rem
-            color: $black
+            color: white
             @include fontStyle(14px, 700)
             text-transform: uppercase
+            transition: .3s ease
+
+        button:hover
+            background-color: $primary_hover
 
 .container_video
     @extend .container_login
-
+    padding: .5rem
     video
         width: 100%
         object-fit: cover
-        border-radius: 50% 0px 0px 50%
+        border-radius: 50% 10px 10px 50%
         height: 100%
         background-color: #424242
 
@@ -49,3 +56,14 @@
     background-attachment: fixed
     background-size: cover
     border-radius: 27% 73% 26% 74% / 56% 26% 74% 44%
+
+.toggle_pages
+    z-index: 2
+    display: flex
+    margin-top: 1rem
+    gap: .5rem
+    text-align: start
+
+    a
+        color: $primary
+        font-weight: 700
