@@ -1,4 +1,5 @@
 .routine_radio
+    position: relative
     width: 5rem
 
     input
@@ -7,8 +8,8 @@
     label
         display: block
         background-color: transparent
-        border: 1px solid $gray
-        @include fontStyle(16px, 800)
+        border: 1px solid index.$gray
+        @include index.fontStyle(16px, 800)
         padding: .4rem
         transition: .3s ease
         cursor: pointer
@@ -17,13 +18,15 @@
             text-align: center
 
     label:hover
-        background-color: $black_hover
-
+        background-color: index.$black_hover
 
     input:checked + label
-        background-color: $black
-        border: 1px solid $black
+        background-color: #FF004F0c
+        border: 1px solid index.$primary
         transform: scale(1.1)
 
         h4
-            color: white
+            color: index.$primary
+
+    .deleteRoutine
+        display: none

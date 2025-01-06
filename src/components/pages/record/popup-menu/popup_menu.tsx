@@ -1,3 +1,4 @@
+import PopUpDelete from "../popup-modal/popup_delete";
 import style from "./popup_menu.module.sass";
 import Popup from 'reactjs-popup';
 
@@ -12,8 +13,7 @@ export default function PopUpExercise() {
       >
         <div className={style.menu}>
           <div className={style.menu_item}><i className="fi fi-rs-dumbbell-horizontal"></i> Editar exercicio</div>
-          <div className={style.menu_item}><i className="fi fi-rs-dumpster"></i> Deletar exercicio</div>
-
+          <div className={style.menu_item}> <PopUpDelete/> </div>
         </div>
       </Popup>
     </>

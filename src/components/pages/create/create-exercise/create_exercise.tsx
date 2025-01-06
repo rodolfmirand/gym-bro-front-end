@@ -127,7 +127,7 @@ export default function CreateExercise() {
             />
           </div>
 
-          <button type="submit">Create</button>
+          <button className={style.submit} type="submit">Create</button>
         </form>
       </div>
     </div>

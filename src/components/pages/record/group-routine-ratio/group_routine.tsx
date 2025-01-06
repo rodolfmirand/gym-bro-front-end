@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useCallback } from "react";
-import style from "./group_routine_create.module.sass";
+import { useCallback, useEffect, useState } from "react";
+import style from "./group_routine.module.sass";
 import { GET } from "../../../../core/services/get";
-import RoutineRadioCreate from "../card-routine-create-radio/routine_radio";
 import { Post } from "../../../../core/services/post-auth";
+import RoutineRadio from "../card-routine-radio/routine_radio";
 
-interface GroupRoutineCreateProps {
+interface GroupRoutineRecord {
   personId: string | unknown;
   onRoutineId: (id: string) => void;
 }
 
-const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
+const GroupRoutine: React.FC<GroupRoutineRecord> = ({
   personId,
   onRoutineId,
 }) => {
   const [routines, setRoutines] = useState<{ name: string; id: string }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [routineId, setRoutineId] = useState<string | null>(null);
   const token = localStorage.getItem("token");
 
   const fetchRoutines = useCallback(async () => {
@@ -29,6 +30,11 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
             a.name.localeCompare(b.name)
         );
         setRoutines(sortedRoutines);
+
+        if (result.data.length > 0 && !routineId) {
+          setRoutineId(result.data[0].id);
+          onRoutineId(result.data[0].id);
+        }
       } else {
         console.error("Erro ao buscar rotinas:", result.message);
       }
@@ -37,9 +43,10 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
     } finally {
       setLoading(false);
     }
-  }, [personId, onRoutineId]);
+  }, [personId, routineId, onRoutineId]);
 
   const handleRoutine = (id: string) => {
+    setRoutineId(id);
     onRoutineId(id);
   };
 
@@ -69,16 +76,17 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
   };
 
   return (
-    <div className={style.group_routine_create}>
+    <div className={style.group_routine}>
       {loading ? (
         <p>Carregando rotinas...</p>
       ) : routines.length > 0 ? (
         routines.map((routine) => (
-          <RoutineRadioCreate
+          <RoutineRadio
             key={routine.id}
             day={routine.name}
             id={routine.id}
             onClick={handleRoutine}
+            checked={routineId === routine.id}
           />
         ))
       ) : (
@@ -86,7 +94,7 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
       )}
 
       {routines.length < 5 && (
-        <button className={style.createRoutine} onClick={handleClick} disabled={loading}>
+        <button className={style.createRoutine}  onClick={handleClick} disabled={loading}>
           <i className="fi fi-rs-plus"></i>
         </button>
       )}
@@ -94,4 +102,4 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
   );
 };
 
-export default GroupRoutineCreate;
+export default GroupRoutine;

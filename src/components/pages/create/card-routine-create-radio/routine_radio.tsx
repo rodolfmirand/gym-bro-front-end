@@ -22,6 +22,8 @@ const RoutineRadioCreate: React.FC<RoutineProps> = ({ day, id, onClick }) => {
       <label htmlFor={`radio-${day}`}>
         <h4>{day}</h4>
       </label>
+
+      <button className={style.deleteRoutine}><i className="fi fi-rs-x"></i></button>
     </div>
   );
 };

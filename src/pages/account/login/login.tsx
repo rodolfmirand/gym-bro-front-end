@@ -23,10 +23,8 @@ export default function Login() {
     const result = await Post("http://localhost:8080/gymbro/auth/login", form);
 
     if (result.success) {
-      console.log("Login bem-sucedido!", result.data);
       localStorage.setItem("userId", result.data.id);
       localStorage.setItem("token", result.data.access_token);
-
       navigate("/home"); 
       
     } else {

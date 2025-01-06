@@ -19,8 +19,8 @@ export default function Account() {
       <Routes>
 
         <Route path='' element={<Body />}>
-          <Route path='register' element={<Register />}/>
-          <Route path='login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+          <Route path='/login' element={<Login />}/>
         </Route>
 
       </Routes>

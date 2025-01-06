@@ -6,9 +6,9 @@
 
     label
         position: relative
-        @include flexCenter(column-reverse, space-around)
+        @include index.flexCenter(column-reverse, space-around)
         align-items: start
-        border: 1px solid $gray
+        border: 1px solid index.$gray
         padding: .5rem 
         border-radius: 8px  
         cursor: pointer
@@ -19,14 +19,21 @@
             text-transform: capitalize
             width: 100%
 
+        img
+            z-index: 2
+            transition: .3s ease
+            width: 32px
 
     label:hover
-        background-color: $black_hover
+        background-color: index.$black_hover
 
     input:checked + label
         background-color: #FF004F0c
-        border: 1px solid $primary
+        border: 1px solid index.$primary
         transform: scale(1.1)
 
         h4
-            color: $primary
+            color: index.$primary
+
+        img
+            transform: scale(1.1)

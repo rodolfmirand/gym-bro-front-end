@@ -96,7 +96,7 @@ export default function CreateCardio() {
                 onRoutineId={handleRoutineId}
               />
             </div>
-            <button type="submit">Create</button>
+            <button className={style.submit} type="submit">Create</button>
           </form>
         </div>
       </div>

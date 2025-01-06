@@ -1,16 +1,15 @@
 import PopUpExercice from "../popup-menu/popup_menu";
-import style from "./exercise.module.sass";
+import style from "../exercise/exercise.module.sass";
 
 interface ExerciseProps {
   name: string;
-  sets: number;
-  reps: number;
-  load: number;
+  description: string;
+  time: number;
   equipment: string;
-  muscle: string;
+
 }
 
-const Exercise: React.FC<ExerciseProps> = ({ name, sets, reps, load, equipment, muscle}) => {
+const Cardio: React.FC<ExerciseProps> = ({ name, description, time, equipment }) => {
   return (
     <>
       <div className={style.body_exercise}>
@@ -19,9 +18,8 @@ const Exercise: React.FC<ExerciseProps> = ({ name, sets, reps, load, equipment, 
           <div className={style.text_exercise}>
             <h1>{name}</h1>
             <div className={style.subtext_exercise}>
-              <p>{muscle}</p>
-              <p>{sets}x{reps} reps</p>
               <p>{equipment}</p>
+              <p>{time}</p>
             </div>
           </div>
 
@@ -29,11 +27,11 @@ const Exercise: React.FC<ExerciseProps> = ({ name, sets, reps, load, equipment, 
 
         </div>
         <div className={style.current_exercise}>
-          <p>Carga: <strong>{load} KG</strong></p>
+          <p>{description}</p>
         </div>
       </div>
     </>
   );
 } 
 
-export default Exercise;
+export default Cardio;

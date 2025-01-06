@@ -1,16 +1,18 @@
+
+
 .menu
     padding: .8rem
     display: flex
     flex-direction: column
     background-color: white
-    border: 1px solid $gray
+    border: 1px solid index.$gray
     box-shadow: 0 6px 12px #26214a38
-    border-radius: 8px
-    @include fontStyle(14px, 600)
+
 
     &_item
         display: flex
         gap: .5rem
+        @include index.fontStyle(14px, 600)
         cursor: pointer
         padding: .6rem 0
         transition: .3s
@@ -18,5 +20,3 @@
     &_item:hover,
     &_item:hover i
         color: #b92929
-       
- 

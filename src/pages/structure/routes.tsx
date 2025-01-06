@@ -1,10 +1,11 @@
 import {
-  BrowserRouter,
-  Routes,
   Route,
-  Outlet,
+  Routes,
   Navigate,
+  BrowserRouter,
+  Outlet,
 } from "react-router-dom";
+
 import style from "./structure.module.sass";
 import Home from "./home/home";
 import Record from "./record/record";
@@ -29,9 +30,10 @@ export default function Main() {
     <BrowserRouter>
       <Routes>
         <Route path="" element={<Body />}>
-          <Route path="home" element={<Home />} />
-          <Route path="record" element={<Record />} />
-          <Route path="exercise" element={<Create />}>
+          <Route path="/home" element={<Home />} />
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="/record" element={<Record />} />
+          <Route path="/exercise" element={<Create />}>
             <Route index element={<Navigate to="bodybuilding" />} />
             <Route path="bodybuilding" element={<CreateExercise />} />
             <Route path="cardio" element={<CreateCardio />} />

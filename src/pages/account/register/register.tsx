@@ -22,7 +22,7 @@ export default function Register() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    
+
     /* Conversor */
     if (id === "birthDate" && value) {
       setForm((data) => ({ ...data, [id]: convertDate(value) }));
@@ -42,13 +42,14 @@ export default function Register() {
     const result = await Post("http://localhost:8080/gymbro/person", form);
 
     if (result.success) {
-      console.log("Usuário registrado com sucesso!");
       localStorage.setItem("userId", result.data.id);
       localStorage.setItem("token", result.data.access_token);
 
       navigate("/home");
     } else {
       console.error("Erro ao registrar usuário:", result.message);
+      console.log(form);
+      
     }
   };
 

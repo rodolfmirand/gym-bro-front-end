@@ -12,7 +12,7 @@ export default defineConfig({
             return content;
           }
           // Adicione a importação para outros arquivos
-          return `@import '/src/index.sass'\n${content}`;
+          return `@use '/src/index.sass'\n${content}`;
         },
       },
     },

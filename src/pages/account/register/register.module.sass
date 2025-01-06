@@ -1,9 +1,9 @@
-@import '../login/login.module.sass'
+@import url("../login/login.module.sass")
 
 .container_singup
     width: 50%
     height: 100%
-    @include flexCenter(column, center)
+    @include index.flexCenter(column, center)
 
     .container_form
         width: 28rem
@@ -18,7 +18,7 @@
             margin-bottom: 1.5rem
 
             h1
-                @include fontStyle(58px, 900)
+                @include index.fontStyle(58px, 900)
 
 
         form
@@ -31,12 +31,12 @@
                 gap: 1rem
 
     button
-        background-color: $primary
+        background-color: index.$primary
         padding: .8rem
         color: white
-        @include fontStyle(14px, 700)
+        @include index.fontStyle(14px, 700)
         text-transform: uppercase
         transition: .3s ease
 
     button:hover
-        background-color: $primary_hover
+        background-color: index.$primary_hover
