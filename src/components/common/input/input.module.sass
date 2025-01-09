@@ -2,25 +2,26 @@ label
     font-size: 12px
     width: 100%
     text-transform: capitalize
+    
     .input_body
         margin-top: 5px
         width: 100%
         display: flex
         gap: .8rem
         border-radius: 6px
-        padding: .6rem
+        padding: 1rem
         font-size: .875rem
-        border: 1px solid index.$gray
+        background-color: index.$background
 
         input
             width: 100%
             background-color: transparent
-            color: index.$black
+            color: index.$font
             font-weight: 400
             border: 0
 
         i
-            color: index.$gray
+           color: index.$font
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button
@@ -28,3 +29,4 @@ input::-webkit-inner-spin-button
 
 input:focus
     outline: 0
+    background-color: transparent

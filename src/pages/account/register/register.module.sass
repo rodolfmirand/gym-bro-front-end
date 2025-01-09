@@ -4,12 +4,10 @@
     width: 50%
     height: 100%
     @include index.flexCenter(column, center)
+    background-color: index.$background_two
 
     .container_form
-        width: 28rem
-        border-radius: 35px
         padding: 1.875rem 3.75rem
-        box-shadow: 0 24px 64px #26214a38
         z-index: 2
 
         .text_container
@@ -20,10 +18,9 @@
             h1
                 @include index.fontStyle(58px, 900)
 
-
         form
             display: flex
-            gap: 1.25rem
+            gap: 1.5rem
             flex-direction: column
 
             .same_place
@@ -31,8 +28,9 @@
                 gap: 1rem
 
     button
+        margin-top: 1rem
         background-color: index.$primary
-        padding: .8rem
+        padding: .9rem
         color: white
         @include index.fontStyle(14px, 700)
         text-transform: uppercase

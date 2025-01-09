@@ -2,13 +2,10 @@
     width: 50%
     height: 100%
     @include index.flexCenter(column, center)
+    background-color: index.$background_two
 
     .container_form
-        background-color: white
-        width: 28rem
-        border-radius: 35px
         padding: 1.875rem 3.75rem
-        box-shadow: 0 24px 64px #26214a38
         z-index: 2
 
         .text_container
@@ -25,8 +22,9 @@
             flex-direction: column
 
         button
+            margin-top: 1rem
             background-color: index.$primary
-            padding: .8rem
+            padding: .9rem
             color: white
             @include index.fontStyle(14px, 700)
             text-transform: uppercase
@@ -37,19 +35,26 @@
 
 .container_video
     @extend .container_login
-    padding: .5rem
+    position: relative 
 
     video
         width: 100%
         object-fit: cover
-        border-radius: 50% 10px 10px 50%
         height: 100%
-        background-color: #424242
+
+    &::before
+        content: ''
+        height: 100%
+        width: 20vw
+        background: linear-gradient(90deg, #363a3f 0%, #ffffff00 100%)
+        position: absolute
+        left: 0
+        top: 0
 
 .toggle_pages
     display: flex
-    gap: .8rem
-    margin-top: 1.5rem
+    gap: .7rem
+
     a
         color: index.$primary
         font-weight: 700

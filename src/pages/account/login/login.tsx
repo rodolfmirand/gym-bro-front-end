@@ -41,6 +41,7 @@ export default function Login() {
           muted
           loop
         ></video>
+  
       </div>
       <div className={style.container_login}>
         <div className={style.container_form}>
@@ -63,7 +64,7 @@ export default function Login() {
               iconClass="fi fi-rs-lock"
               onChange={handleChange}
             />
-            <button type="submit">Continue</button>
+            <button type="submit">Let's Train</button>
           </form>
         </div>
         <div className={style.toggle_pages}>

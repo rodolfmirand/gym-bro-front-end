@@ -4,6 +4,7 @@ import style from "./popup_edit.module.sass";
 import Popup from "reactjs-popup";
 import InputField from "../../../common/input/input";
 
+
 interface PopUpEditProps {
   exerciseId: string;
   exerciseType: string;
