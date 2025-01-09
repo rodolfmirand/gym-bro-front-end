@@ -1,14 +1,14 @@
 
-import Account from './pages/account/routes'
-import Main from './pages/structure/routes'
+
+
 import 'reactjs-popup/dist/index.css';
+import RoutesControll from './routes/routes';
 
 export default function App() {
 
   return (
     <>
-      <Account/>
-      <Main/>
+      <RoutesControll />
     </>
   )
 }

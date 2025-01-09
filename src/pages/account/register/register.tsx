@@ -85,7 +85,7 @@ export default function Register() {
                 label="username"
                 placeholder="Nickname"
                 type="text"
-                iconClass="fi fi-rs-dumbbell-weightlifting"
+                iconClass="fi fi-rs-user-ninja"
                 onChange={handleChange}
               />
             </div>
