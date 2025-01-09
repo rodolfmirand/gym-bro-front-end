@@ -11,7 +11,7 @@ export default function Login() {
   });
 
   const navigate = useNavigate();
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setForm((data) => ({ ...data, [id]: value }));
@@ -23,10 +23,10 @@ export default function Login() {
     const result = await Post("http://localhost:8080/gymbro/auth/login", form);
 
     if (result.success) {
-      localStorage.setItem("userId", result.data.id);
-      localStorage.setItem("token", result.data.access_token);
-      navigate("/home"); 
-      
+      localStorage.setItem("userId", result.data.person.id);
+      localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
+      localStorage.setItem("token", result.data.access.token);
+      navigate("/home");
     } else {
       console.error("Erro no login:", result.message);
     }

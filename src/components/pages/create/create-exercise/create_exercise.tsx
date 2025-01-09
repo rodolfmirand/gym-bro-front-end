@@ -58,7 +58,6 @@ export default function CreateExercise() {
         console.log("Exercicio registrado com sucesso!");
       } else {
         console.error("Erro ao registrar exercicio:", result.message);
-        console.log(form);
       }
     } else {
       console.error("Nenhuma rotina selecionada.");

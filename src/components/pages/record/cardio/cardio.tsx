@@ -6,10 +6,10 @@ interface ExerciseProps {
   description: string;
   time: number;
   equipment: string;
-
+  id: string;
 }
 
-const Cardio: React.FC<ExerciseProps> = ({ name, description, time, equipment }) => {
+const Cardio: React.FC<ExerciseProps> = ({ id, name, description, time, equipment }) => {
   return (
     <>
       <div className={style.body_exercise}>
@@ -23,7 +23,7 @@ const Cardio: React.FC<ExerciseProps> = ({ name, description, time, equipment })
             </div>
           </div>
 
-          <PopUpExercice />
+          <PopUpExercice exerciseId={id} exerciseType={"cardio"} />
 
         </div>
         <div className={style.current_exercise}>

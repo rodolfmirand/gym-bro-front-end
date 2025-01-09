@@ -1,12 +1,11 @@
-export const Post = async (url: string, data: unknown, token: unknown) => {
+export const DELETE = async (url: string, token: unknown) => {
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
     });
 
     if (response.ok) {
@@ -14,11 +13,11 @@ export const Post = async (url: string, data: unknown, token: unknown) => {
       const data = responseData.data ? responseData.data : responseData;
       return { success: true, data };
     } else {
-      console.error("Erro na requisição POST:", response.statusText);
-      return { success: false, message: response.statusText };
+      console.error("Erro na requisição DELETE:", response.statusText);
+      return { success: false, message: `Erro: ${response.statusText}` };
     }
   } catch (error) {
     console.error("Erro na requisição:", error);
-    return { success: false, message: error };
+    return { success: false, message: `Erro na requisição: ${error}` };
   }
 };

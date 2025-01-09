@@ -1,12 +1,12 @@
-export const Post = async (url: string, data: unknown, token: unknown) => {
+export const UPDATE = async (url: string, token: unknown, body: unknown) => {
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(body),
     });
 
     if (response.ok) {
@@ -14,11 +14,11 @@ export const Post = async (url: string, data: unknown, token: unknown) => {
       const data = responseData.data ? responseData.data : responseData;
       return { success: true, data };
     } else {
-      console.error("Erro na requisição POST:", response.statusText);
-      return { success: false, message: response.statusText };
+      console.error("Erro na requisição UPDATE:", response.statusText);
+      return { success: false, message: `Erro: ${response.statusText}` };
     }
   } catch (error) {
     console.error("Erro na requisição:", error);
-    return { success: false, message: error };
+    return { success: false, message: `Erro na requisição: ${error}` };
   }
 };

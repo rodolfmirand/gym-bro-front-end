@@ -16,7 +16,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
   const [routines, setRoutines] = useState<{ name: string; id: string }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [routineId, setRoutineId] = useState<string | null>(null);
-  const token = localStorage.getItem("token");
+
 
   const fetchRoutines = useCallback(async () => {
     try {
@@ -58,9 +58,9 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
     setLoading(true);
     try {
       const result = await Post(
-        `http://localhost:8080/gymbro/daily/bbfdf4a4-2f4f-4629-ba20-3391da272fcd`,
+        `http://localhost:8080/gymbro/daily/${localStorage.getItem("workoutRoutineId")}`,
         {},
-        token
+        localStorage.getItem("token")
       );
 
       if (result.success) {

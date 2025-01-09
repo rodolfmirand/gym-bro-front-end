@@ -2,6 +2,7 @@ import PopUpExercice from "../popup-menu/popup_menu";
 import style from "./exercise.module.sass";
 
 interface ExerciseProps {
+  id: string;
   name: string;
   sets: number;
   reps: number;
@@ -10,7 +11,7 @@ interface ExerciseProps {
   muscle: string;
 }
 
-const Exercise: React.FC<ExerciseProps> = ({ name, sets, reps, load, equipment, muscle}) => {
+const Exercise: React.FC<ExerciseProps> = ({id, name, sets, reps, load, equipment, muscle}) => {
   return (
     <>
       <div className={style.body_exercise}>
@@ -25,7 +26,7 @@ const Exercise: React.FC<ExerciseProps> = ({ name, sets, reps, load, equipment, 
             </div>
           </div>
 
-          <PopUpExercice />
+          <PopUpExercice exerciseId={id} exerciseType={"bodybuilding"} />
 
         </div>
         <div className={style.current_exercise}>

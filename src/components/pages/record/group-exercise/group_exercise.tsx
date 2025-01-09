@@ -71,8 +71,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                     name={c.cardioExercise}
                     time={c.time}
                     description={c.description}
-                    equipment={c.equipment}
-                  />
+                    equipment={c.equipment} id={c.id}                  />
                 ))}
               </div>
             </div>
@@ -90,8 +89,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                     reps={e.reps}
                     load={e.load}
                     equipment={e.equipment}
-                    muscle={e.muscleGroup}
-                  />
+                    muscle={e.muscleGroup} id={e.id}                  />
                 ))}
               </div>
             </div>

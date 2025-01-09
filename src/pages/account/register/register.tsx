@@ -42,8 +42,9 @@ export default function Register() {
     const result = await Post("http://localhost:8080/gymbro/person", form);
 
     if (result.success) {
-      localStorage.setItem("userId", result.data.id);
-      localStorage.setItem("token", result.data.access_token);
+      localStorage.setItem("userId", result.data.person.id);
+      localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
+      localStorage.setItem("token", result.data.access.token);
 
       navigate("/home");
     } else {

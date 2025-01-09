@@ -1,22 +1,29 @@
-import PopUpDelete from "../popup-modal/popup_delete";
+import PopUpDelete from "../popup-delete/popup_delete";
+import PopUpEdit from "../popup-edit/popup_edit";
 import style from "./popup_menu.module.sass";
 import Popup from 'reactjs-popup';
 
-export default function PopUpExercise() {
+interface PopUpExerciceProps {
+  exerciseId: string; 
+  exerciseType: string;
+}
+
+const PopUpExercice: React.FC<PopUpExerciceProps> = ({ exerciseId, exerciseType}) => {
   return (
     <>
       <Popup 
       trigger={<button> <i className="fi fi-rs-menu-dots"></i></button>} 
       position="bottom center"
       arrow={false}
-      
+      closeOnDocumentClick={false}
       >
         <div className={style.menu}>
-          <div className={style.menu_item}><i className="fi fi-rs-dumbbell-horizontal"></i> Editar exercicio</div>
-          <div className={style.menu_item}> <PopUpDelete/> </div>
+          <div className={style.menu_item}> <PopUpEdit exerciseId={exerciseId} exerciseType={exerciseType}/></div>
+          <div className={style.menu_item}> <PopUpDelete exerciseId={exerciseId}/> </div>
         </div>
       </Popup>
     </>
   );
 }
 
+export default PopUpExercice;

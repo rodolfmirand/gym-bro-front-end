@@ -51,7 +51,9 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
     setLoading(true);
     try {
       const result = await Post(
-        `http://localhost:8080/gymbro/daily/bbfdf4a4-2f4f-4629-ba20-3391da272fcd`,
+        `http://localhost:8080/gymbro/daily/${localStorage.getItem(
+          "workoutRoutine"
+        )}`,
         {},
         token
       );
@@ -86,7 +88,11 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
       )}
 
       {routines.length < 5 && (
-        <button className={style.createRoutine} onClick={handleClick} disabled={loading}>
+        <button
+          className={style.createRoutine}
+          onClick={handleClick}
+          disabled={loading}
+        >
           <i className="fi fi-rs-plus"></i>
         </button>
       )}

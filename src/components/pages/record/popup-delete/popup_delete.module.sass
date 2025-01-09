@@ -1,39 +1,47 @@
 
-
 .button
     display: flex
-    gap: .5rem
+    gap: .6rem
     transition: .3s
     @include index.fontStyle(14px, 600)
 
 .button:hover
     color: #b92929
-
-.myPopup.reactjs-popup-content
-  background-color: #ee0000
-  padding: 30px
-  border-radius: 28px
-
-
+    border-radius: 28px
 
 .modal
     font-size: 12px
+    background-color: white
+    padding: .625rem
+    border-radius: 12px
+    width: 20rem
+    
     .header
         width: 100%
-        border-bottom: 1px solid gray
         font-size: 18px
         text-align: center
         padding: 5px
 
     .content
         width: 100%
-        padding: 10px 5px
+        padding: 1rem 0
 
     .actions
         width: 100%
-        padding: 10px 5px
-        margin: auto
-        text-align: center
+        margin-top: 10px
+        display: flex
+        gap: 1rem
+
+        button
+            width: 30%
+            padding: .6rem
+            @include index.fontStyle(14px, 700)
+            border-radius: 8px
+        
+        button:nth-child(2)
+            background-color: index.$primary
+            width: 70%
+            color: white
 
     .close
         cursor: pointer
@@ -46,4 +54,3 @@
         background: #ffffff
         border-radius: 18px
         border: 1px solid #cfcece
-

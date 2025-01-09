@@ -1,0 +1,67 @@
+
+.button
+    display: flex
+    gap: .6rem
+    transition: .3s
+    @include index.fontStyle(14px, 600)
+
+.button:hover
+    color: #b92929
+    border-radius: 28px
+
+.modal
+    font-size: 12px
+    background-color: white
+    padding: 2rem
+    border-radius: 12px
+    width: 37rem
+
+    .header
+        width: 100%
+        font-size: 18px
+        margin-bottom: 1.25rem
+
+        h3
+            text-transform: uppercase
+
+    .content
+        width: 100%
+
+        form
+            display: flex
+            gap: 1.5rem
+            flex-direction: column
+
+
+            .same_place
+                display: flex
+                gap: 1rem
+
+            .actions
+                width: 100%
+                margin-top: 10px
+                display: flex
+                gap: 1rem
+
+                button
+                    width: 30%
+                    padding: .6rem
+                    @include index.fontStyle(14px, 700)
+                    border-radius: 8px
+
+                button:nth-child(2)
+                    background-color: index.$primary
+                    width: 70%
+                    color: white
+
+    .close
+        cursor: pointer
+        display: block
+        padding: 2px 5px
+        line-height: 20px
+        right: -10px
+        top: -10px
+        font-size: 24px
+        background: #ffffff
+        border-radius: 18px
+        border: 1px solid #cfcece
