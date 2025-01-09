@@ -4,8 +4,6 @@ import style from "./home.module.sass";
 const menu = [
   { link: "/record", text: "Seu treino" },
   { link: "/exercise", text: "Montar exercicio" },
-  { link: "link3", text: "Lorem1" },
-  { link: "link4", text: "Lorem2" },
 ];
 
 export default function Home() {
