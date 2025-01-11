@@ -1,0 +1,19 @@
+
+.menu
+    padding: 1rem .8rem
+    display: flex
+    gap: 1rem
+    flex-direction: column
+    background-color: white
+    border-radius: 8px
+
+    &_item
+        display: flex
+        gap: .6rem
+        @include index.fontStyle(14px, 600)
+        cursor: pointer
+        transition: .3s
+
+    &_item:hover,
+    &_item:hover i
+        color: #b92929

@@ -13,7 +13,7 @@ const CardHome: React.FC<CardHomeProps> = ({link, text}) => {
         <div className={style.img}></div>
         <div className={style.text}>
           <h3>{text}</h3>
-          <i className="fa-solid fa-angle-right"></i>
+          <i className="fi fi-rs-arrow-alt-right"></i>
         </div>
       </Link>
     </>
