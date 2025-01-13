@@ -58,7 +58,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
     setLoading(true);
     try {
       const result = await Post(
-        `http://localhost:8080/gymbro/daily/${localStorage.getItem("workoutRoutineId")}`,
+        `http://localhost:8080/gymbro/daily/${localStorage.getItem("userId")}`,
         {},
         localStorage.getItem("token")
       );

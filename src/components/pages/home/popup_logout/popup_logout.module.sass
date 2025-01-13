@@ -3,15 +3,17 @@
     display: flex
     gap: .6rem
     transition: .3s
+    align-items: center
     @include index.fontStyle(14px, 600)
     padding: .6rem
     width: 100%
 
 .button:hover
-    color: #b92929
+    color: index.$primary
     background-color: #FF004F0c
+    
     i
-        color: #b92929
+        color: index.$primary
 
 .modal
     font-size: 12px
@@ -45,16 +47,8 @@
         button:nth-child(2)
             background-color: index.$primary
             width: 70%
+            transition: .3s
             color: white
 
-    .close
-        cursor: pointer
-        display: block
-        padding: 2px 5px
-        line-height: 20px
-        right: -10px
-        top: -10px
-        font-size: 24px
-        background: #ffffff
-        border-radius: 18px
-        border: 1px solid #cfcece
+        button:hover:nth-child(2)
+            background-color: index.$primary_hover

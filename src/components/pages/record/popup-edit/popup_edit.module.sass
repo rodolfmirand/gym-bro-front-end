@@ -1,17 +1,22 @@
 
 .button
     display: flex
+    align-items: center
     gap: .6rem
     transition: .3s
     @include index.fontStyle(14px, 600)
+    padding: .6rem
+    width: 100%
 
 .button:hover
-    color: #b92929
-    border-radius: 28px
+    color: white
+    background-color: #363a3f69
+    i
+        color: white
 
 .modal
     font-size: 12px
-    background-color: white
+    background-color: index.$background_two
     padding: 2rem
     border-radius: 12px
     width: 37rem
@@ -31,7 +36,6 @@
             display: flex
             gap: 1.5rem
             flex-direction: column
-
 
             .same_place
                 display: flex
@@ -53,15 +57,3 @@
                     background-color: index.$primary
                     width: 70%
                     color: white
-
-    .close
-        cursor: pointer
-        display: block
-        padding: 2px 5px
-        line-height: 20px
-        right: -10px
-        top: -10px
-        font-size: 24px
-        background: #ffffff
-        border-radius: 18px
-        border: 1px solid #cfcece

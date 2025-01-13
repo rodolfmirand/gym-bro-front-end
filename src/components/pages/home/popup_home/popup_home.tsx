@@ -1,3 +1,4 @@
+import PopUpLogout from "../popup_logout/popup_logout";
 import style from "./popup_home.module.sass";
 import Popup from 'reactjs-popup';
 
@@ -12,7 +13,7 @@ const PopUpHome: React.FC = () => {
         closeOnDocumentClick={false}
       >
         <div className={style.menu}>
-          <div className={style.menu_item}><i className="fi fi-rs-sign-out-alt"></i> Logout</div>
+          <div className={style.menu_item}><PopUpLogout exerciseId={""}/></div>
         </div>
       </Popup>
     </>

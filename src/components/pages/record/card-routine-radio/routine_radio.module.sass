@@ -7,7 +7,7 @@
     label
         display: block
         background-color: transparent
-        border: 1px solid index.$gray
+        border: 1px solid transparent
         @include index.fontStyle(16px, 800)
         padding: .8rem
         transition: .3s ease
@@ -21,8 +21,8 @@
 
 
     input:checked + label
-        background-color: index.$black
-        border: 1px solid index.$black
+        background-color: index.$background
+        border: 1px solid index.$background
         transform: scale(1.1)
 
         h4

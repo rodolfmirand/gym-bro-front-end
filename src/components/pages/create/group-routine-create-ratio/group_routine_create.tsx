@@ -52,7 +52,7 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
     try {
       const result = await Post(
         `http://localhost:8080/gymbro/daily/${localStorage.getItem(
-          "workoutRoutine"
+          "userId"
         )}`,
         {},
         token
