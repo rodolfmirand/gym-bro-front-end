@@ -31,6 +31,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
     }[]
   >([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [needsUpdate, setNeedsUpdate] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchRoutines = async () => {
@@ -41,7 +42,6 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
         if (result.success) {
           setExerciseBulding(result.data.bodybuildingExercises);
           setExerciseCardio(result.data.cardioExercises);
-      
         } else {
           console.error("Erro ao buscar rotinas:", result.message);
         }
@@ -49,11 +49,20 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
         console.error("Erro na solicitação:", error);
       } finally {
         setLoading(false);
+        setNeedsUpdate(false);
       }
     };
 
     fetchRoutines();
-  }, [dailyId]);
+  }, [dailyId, needsUpdate]);
+
+  const recallLoading = (newLoading: boolean) => {
+    setLoading(newLoading);
+    if (newLoading) {
+      // Ativa o recarregamento ao mudar o estado de loading para true
+      setNeedsUpdate(true); 
+    }
+  };
 
   return (
     <div className={style.container_group}>
@@ -71,7 +80,10 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                     name={c.cardioExercise}
                     time={c.time}
                     description={c.description}
-                    equipment={c.equipment} id={c.id}                  />
+                    equipment={c.equipment}
+                    id={c.id}
+                    onLoading={recallLoading}
+                  />
                 ))}
               </div>
             </div>
@@ -89,17 +101,25 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                     reps={e.reps}
                     load={e.load}
                     equipment={e.equipment}
-                    muscle={e.muscleGroup} id={e.id}                  />
+                    muscle={e.muscleGroup}
+                    id={e.id}
+                    onLoading={recallLoading}
+                  />
                 ))}
               </div>
             </div>
           )}
         </>
       ) : (
-        <p>Nenhum exercício encontrado. <Link to={"/exercise/bodybuilding"}>Clique aqui</Link></p>
+        <p>
+          Nenhum exercício encontrado.{" "}
+          <Link to={"/exercise/bodybuilding"}>Clique aqui</Link>
+        </p>
       )}
     </div>
   );
 };
 
 export default GroupExercise;
+
+

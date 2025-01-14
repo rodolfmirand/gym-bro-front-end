@@ -14,6 +14,7 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
   onRoutineId,
 }) => {
   const [routines, setRoutines] = useState<{ name: string; id: string }[]>([]);
+  const [routineId, setRoutineId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const token = localStorage.getItem("token");
 
@@ -29,6 +30,11 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
             a.name.localeCompare(b.name)
         );
         setRoutines(sortedRoutines);
+
+        if (result.data.length > 0 && !routineId) {
+          setRoutineId(result.data[0].id);
+          onRoutineId(result.data[0].id);
+        }
       } else {
         console.error("Erro ao buscar rotinas:", result.message);
       }
@@ -81,6 +87,8 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
             day={routine.name}
             id={routine.id}
             onClick={handleRoutine}
+            checked={routineId === routine.id}
+
           />
         ))
       ) : (

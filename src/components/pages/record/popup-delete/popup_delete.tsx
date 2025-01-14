@@ -3,10 +3,14 @@ import Popup from "reactjs-popup";
 import { DELETE } from "../../../../core/services/delete";
 
 interface PopUpDeleteProps {
-  exerciseId: string; 
+  exerciseId: string;
+  onLoading: (loading: boolean) => void;
 }
 
-export default function PopUpDelete({ exerciseId }: PopUpDeleteProps) {
+export default function PopUpDelete({
+  exerciseId,
+  onLoading,
+}: PopUpDeleteProps) {
   const handleDelete = async () => {
     const response = await DELETE(
       `http://localhost:8080/gymbro/exercise/${exerciseId}`,
@@ -14,11 +18,41 @@ export default function PopUpDelete({ exerciseId }: PopUpDeleteProps) {
     );
 
     if (response.success) {
-      console.log("Exercício deletado com sucesso!");
+      // Recarregar GroupExercise após deletar
+      onLoading(true);
     } else {
-      console.log(`Erro ao deletar: ${response.message}`);
+      console.error(`Erro ao deletar: ${response.message}`);
     }
   };
+
+  const renderPopupContent = (close: () => void) => (
+    <div className={style.modal}>
+      <div className={style.header}>Confirmar exclusão</div>
+      <div className={style.content}>
+        Tem certeza de que deseja excluir este exercício? Esta ação não pode ser
+        desfeita.
+      </div>
+      <div className={style.actions}>
+        <button
+          onClick={() => {
+            close();
+          }}
+          className={style.cancelButton}
+        >
+          Cancelar
+        </button>
+        <button
+          onClick={() => {
+            handleDelete();
+            close();
+          }}
+          className={style.deleteButton}
+        >
+          Deletar
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -26,31 +60,12 @@ export default function PopUpDelete({ exerciseId }: PopUpDeleteProps) {
         modal
         trigger={
           <button className={style.button}>
-            <i className="fi fi-rs-dumpster"></i> Deletar exercício{" "}
+            <i className="fi fi-rs-dumpster"></i> Deletar exercício
           </button>
         }
         nested
       >
-        <div className={style.modal}>
-          <div className={style.header}>Confirmar exclusão</div>
-          <div className={style.content}>
-            Tem certeza de que deseja excluir este exercício? Esta ação não pode
-            ser desfeita.
-          </div>
-          <div className={style.actions}>
-            <button
-              onClick={() => {
-                close();
-              }}
-              className={style.cancelButton}
-            >
-              Cancelar
-            </button>
-            <button onClick={handleDelete} className={style.deleteButton}>
-              Deletar
-            </button>
-          </div>
-        </div>
+        {(close: () => void) => renderPopupContent(close)}
       </Popup>
     </>
   );

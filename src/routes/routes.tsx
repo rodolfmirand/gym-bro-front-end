@@ -8,6 +8,7 @@ import CreateCardio from "../components/pages/create/create-cardio/create_cardio
 import CreateExercise from "../components/pages/create/create-exercise/create_exercise";
 import Create from "../pages/structure/create/create";
 import Record from "../pages/structure/record/record";
+import PageNotFound from "../pages/not-found/notFound";
 
 export default function RoutesControll() {
   return (
@@ -28,6 +29,8 @@ export default function RoutesControll() {
             <Route path="cardio" element={<CreateCardio />} />
           </Route>
         </Route>
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

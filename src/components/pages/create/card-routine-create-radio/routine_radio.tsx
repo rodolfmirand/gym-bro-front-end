@@ -4,9 +4,10 @@ interface RoutineProps {
   day: string;
   id: string;
   onClick: (id: string) => void; 
+  checked: boolean
 }
 
-const RoutineRadioCreate: React.FC<RoutineProps> = ({ day, id, onClick }) => {
+const RoutineRadioCreate: React.FC<RoutineProps> = ({ day, id, onClick, checked }) => {
   const handleClick = () => {
     onClick(id); 
   };
@@ -18,6 +19,7 @@ const RoutineRadioCreate: React.FC<RoutineProps> = ({ day, id, onClick }) => {
         id={`radio-${day}`}
         name="routine-option"
         onClick={handleClick}
+        defaultChecked={checked}
       />
       <label htmlFor={`radio-${day}`}>
         <h4>{day}</h4>

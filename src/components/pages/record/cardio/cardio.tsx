@@ -7,9 +7,10 @@ interface ExerciseProps {
   time: number;
   equipment: string;
   id: string;
+  onLoading: (newLoading: boolean) => void;
 }
 
-const Cardio: React.FC<ExerciseProps> = ({ id, name, description, time, equipment }) => {
+const Cardio: React.FC<ExerciseProps> = ({ id, name, description, time, equipment, onLoading }) => {
   return (
     <>
       <div className={style.body_exercise}>
@@ -23,7 +24,7 @@ const Cardio: React.FC<ExerciseProps> = ({ id, name, description, time, equipmen
             </div>
           </div>
 
-          <PopUpExercice exerciseId={id} exerciseType={"cardio"} />
+          <PopUpExercice exerciseId={id} exerciseType={"cardio"} onLoading={onLoading} />
 
         </div>
         <div className={style.current_exercise}>

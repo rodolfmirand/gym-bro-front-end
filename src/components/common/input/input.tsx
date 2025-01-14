@@ -20,6 +20,7 @@ const InputField: React.FC<InputProps> = ({label, placeholder, type, iconClass, 
           placeholder={placeholder}
           id={label}
           onChange={onChange}
+          required
         />
       </div>
     </label>

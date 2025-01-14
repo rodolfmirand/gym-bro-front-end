@@ -1,3 +1,4 @@
+import { tr } from "motion/react-m";
 import MuscleRadio from "../card-muscle-radio/muscle_radio";
 import style from "./group_muscle.module.sass";
 
@@ -19,6 +20,8 @@ const GroupMuscle: React.FC<GroupProps> = ({ onChange }) => {
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
+    
+    
   };
 
   return (
@@ -29,6 +32,7 @@ const GroupMuscle: React.FC<GroupProps> = ({ onChange }) => {
           name={exercise.name}
           id={exercise.id}
           onChange={handleRadioChange}
+          checked={exercise.id === 'ABDOMINAL'}
         />
       ))}
     </div>

@@ -26,6 +26,7 @@ const GroupCadio: React.FC<GroupProps> = ({ onChange }) => {
           name={exercise.name}
           id={exercise.id}
           onChange={handleRadioChange}
+          checked={exercise.id === 'CYCLING'}
         />
       ))}
     </div>

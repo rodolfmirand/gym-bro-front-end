@@ -6,9 +6,10 @@ import Popup from 'reactjs-popup';
 interface PopUpExerciceProps {
   exerciseId: string; 
   exerciseType: string;
+  onLoading: (newLoading: boolean) => void;
 }
 
-const PopUpExercice: React.FC<PopUpExerciceProps> = ({ exerciseId, exerciseType}) => {
+const PopUpExercice: React.FC<PopUpExerciceProps> = ({ exerciseId, exerciseType, onLoading}) => {
   return (
     <>
       <Popup 
@@ -19,7 +20,7 @@ const PopUpExercice: React.FC<PopUpExerciceProps> = ({ exerciseId, exerciseType}
       >
         <div className={style.menu}>
           <div className={style.menu_item}> <PopUpEdit exerciseId={exerciseId} exerciseType={exerciseType}/></div>
-          <div className={style.menu_item}> <PopUpDelete exerciseId={exerciseId}/> </div>
+          <div className={style.menu_item}> <PopUpDelete exerciseId={exerciseId} onLoading={onLoading}/> </div>
         </div>
       </Popup>
     </>
