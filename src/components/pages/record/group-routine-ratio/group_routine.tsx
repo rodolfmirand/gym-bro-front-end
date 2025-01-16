@@ -77,7 +77,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
       try {
         const result = await DELETE(
           `http://localhost:8080/gymbro/daily/${idRoutine}/${localStorage.getItem(
-            "workoutRoutineId"
+            "userId"
           )}`,
           localStorage.getItem("token")
         );
