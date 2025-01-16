@@ -52,3 +52,10 @@ export default tseslint.config({
 ### icones:
 
 Muscle icons created by cube29: https://www.flaticon.com/free-icons/muscle
+
+### Dependecias:
+
+npm install sass;
+npm install motionjs;
+
+
