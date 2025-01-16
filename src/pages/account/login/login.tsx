@@ -27,6 +27,7 @@ export default function Login() {
       localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
       localStorage.setItem("token", result.data.access.token);
       navigate("/home");
+      
     } else {
       console.error("Erro no login:", result.message);
     }

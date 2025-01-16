@@ -19,7 +19,7 @@ const PopUpExercice: React.FC<PopUpExerciceProps> = ({ exerciseId, exerciseType,
       closeOnDocumentClick={false}
       >
         <div className={style.menu}>
-          <div className={style.menu_item}> <PopUpEdit exerciseId={exerciseId} exerciseType={exerciseType}/></div>
+          <div className={style.menu_item}> <PopUpEdit exerciseId={exerciseId} exerciseType={exerciseType} onLoading={onLoading} /></div>
           <div className={style.menu_item}> <PopUpDelete exerciseId={exerciseId} onLoading={onLoading}/> </div>
         </div>
       </Popup>

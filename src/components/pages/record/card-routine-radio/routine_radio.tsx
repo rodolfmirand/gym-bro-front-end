@@ -1,15 +1,23 @@
 import style from "./routine_radio.module.sass";
+import classNames from "classnames"; 
 
 interface RoutineProps {
   day: string;
   id: string;
-  onClick: (id: string) => void; 
-  checked: boolean
+  onClick: (id: string) => void;
+  checked: boolean;
+  className?: string;
 }
 
-const RoutineRadio: React.FC<RoutineProps> = ({ day, id, onClick, checked }) => {
+const RoutineRadio: React.FC<RoutineProps> = ({
+  day,
+  id,
+  onClick,
+  checked,
+  className
+}) => {
   const handleClick = () => {
-    onClick(id); 
+    onClick(id);
   };
 
   return (

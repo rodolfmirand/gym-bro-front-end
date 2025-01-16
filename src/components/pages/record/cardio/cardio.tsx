@@ -1,5 +1,6 @@
-import PopUpExercice from "../popup-menu/popup_menu";
+
 import style from "../exercise/exercise.module.sass";
+import PopUpExercice from "../popups/popup-menu/popup_menu";
 
 interface ExerciseProps {
   name: string;

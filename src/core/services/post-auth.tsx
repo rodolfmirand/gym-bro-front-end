@@ -19,6 +19,6 @@ export const Post = async (url: string, data: unknown, token: unknown) => {
     }
   } catch (error) {
     console.error("Erro na requisição:", error);
-    return { success: false, message: error };
+    return { success: false, message: `Erro na requisição: ${error}` };
   }
 };

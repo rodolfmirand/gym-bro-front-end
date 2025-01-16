@@ -1,18 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UPDATE } from "../../../../../core/services/update";
 import style from "./popup_edit.module.sass";
 import Popup from "reactjs-popup";
 import InputField from "../../../../common/input/input";
+import { GET } from "../../../../../core/services/get";
 
 interface PopUpEditProps {
   exerciseId: string;
   exerciseType: string;
+  onLoading: (loading: boolean) => void;
 }
 
 export default function PopUpEdit({
   exerciseId,
   exerciseType,
+  onLoading,
 }: PopUpEditProps) {
+  
+  useEffect(() => {
+    const fetchRoutines = async () => {
+      try {
+        const result = await GET(
+          `http://localhost:8080/gymbro/exercise/${exerciseId}`
+        );
+        if (result.success) {
+          if (exerciseType === "cardio") {
+            setFormCardio(result.data);
+          } else {
+            setFormExercise(result.data);
+          }
+        } else {
+          console.error("Erro ao buscar rotinas:", result.message);
+        }
+      } catch (error) {
+        console.error("Erro na solicitação:", error);
+      }
+    };
+
+    fetchRoutines();
+  }, [exerciseId, exerciseType]);
+
   const [formExercise, setFormExercise] = useState({
     name: "",
     equipment: "",
@@ -40,8 +67,10 @@ export default function PopUpEdit({
 
     if (result.success) {
       console.log("Sucesso ao atualizar o exercício");
+      onLoading(true);
+      close();
     } else {
-      console.error("Erro ao registrar exercício:", result.message);  
+      console.error("Erro ao registrar exercício:", result.message);
       console.log(formUpdate);
     }
   };
@@ -63,6 +92,97 @@ export default function PopUpEdit({
     }
   };
 
+  const renderPopupContent = (close: () => void) => (
+    <div className={style.modal}>
+      <div className={style.header}>
+        <h3>Edit your exercise:</h3>
+      </div>
+      <div className={style.content}>
+        <form onSubmit={handleSubmit}>
+          {exerciseType === "cardio" ? (
+            <>
+              <div className={style.same_place}>
+                <InputField
+                  label="equipment"
+                  placeholder=""
+                  type="text"
+                  iconClass="fi fi-rs-stationary-bike"
+                  onChange={handleChange}
+                />
+                <InputField
+                  label="time"
+                  placeholder=""
+                  type="number"
+                  iconClass="fi fi-rs-time-oclock"
+                  onChange={handleChange}
+                />
+              </div>
+              <InputField
+                label="description"
+                placeholder="Enter the description:"
+                type="text"
+                iconClass="fi fi-rs-notebook-alt"
+                onChange={handleChange}
+              />
+            </>
+          ) : (
+            <>
+              <div className={style.same_place}>
+                <InputField
+                  label="name"
+                  placeholder=""
+                  type="text"
+                  iconClass="fi fi-rs-dumbbell-fitness"
+                  onChange={handleChange}
+                />
+                <InputField
+                  label="equipment"
+                  placeholder=""
+                  type="text"
+                  iconClass="fi fi-rs-stationary-bike"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className={style.same_place}>
+                <InputField
+                  label="sets"
+                  placeholder=""
+                  type="number"
+                  iconClass="fi fi-rs-memo-pad"
+                  onChange={handleChange}
+                />
+                <InputField
+                  label="reps"
+                  placeholder=""
+                  type="number"
+                  iconClass="fi fi-rs-endless-loop"
+                  onChange={handleChange}
+                />
+                <InputField
+                  label="load"
+                  placeholder=""
+                  type="number"
+                  iconClass="fi fi-rs-gym"
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
+          <div className={style.actions}>
+            <button
+              onClick={() => {
+                close();
+              }}
+            >
+              Cancelar
+            </button>
+            <button type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+
   return (
     <Popup
       modal
@@ -73,88 +193,7 @@ export default function PopUpEdit({
       }
       nested
     >
-      <div className={style.modal}>
-        <div className={style.header}>
-          <h3>Edit your exercise:</h3>
-        </div>
-        <div className={style.content}>
-          <form onSubmit={handleSubmit}>
-            {exerciseType === "cardio" ? (
-              <>
-                <div className={style.same_place}>
-                  <InputField
-                    label="equipment"
-                    placeholder=""
-                    type="text"
-                    iconClass="fi fi-rs-stationary-bike"
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    label="time"
-                    placeholder=""
-                    type="number"
-                    iconClass="fi fi-rs-time-oclock"
-                    onChange={handleChange}
-                  />
-                </div>
-                <InputField
-                  label="description"
-                  placeholder="Enter the description:"
-                  type="text"
-                  iconClass="fi fi-rs-notebook-alt"
-                  onChange={handleChange}
-                />
-              </>
-            ) : (
-              <>
-                <div className={style.same_place}>
-                  <InputField
-                    label="name"
-                    placeholder=""
-                    type="text"
-                    iconClass="fi fi-rs-dumbbell-fitness"
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    label="equipment"
-                    placeholder=""
-                    type="text"
-                    iconClass="fi fi-rs-stationary-bike"
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className={style.same_place}>
-                  <InputField
-                    label="sets"
-                    placeholder=""
-                    type="number"
-                    iconClass="fi fi-rs-memo-pad"
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    label="reps"
-                    placeholder=""
-                    type="number"
-                    iconClass="fi fi-rs-endless-loop"
-                    onChange={handleChange}
-                  />
-                  <InputField
-                    label="load"
-                    placeholder=""
-                    type="number"
-                    iconClass="fi fi-rs-gym"
-                    onChange={handleChange}
-                  />
-                </div>
-              </>
-            )}
-            <div className={style.actions}>
-              <button>Cancelar</button>
-              <button type="submit">Salvar</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      {(close: () => void) => renderPopupContent(close)}
     </Popup>
   );
 }

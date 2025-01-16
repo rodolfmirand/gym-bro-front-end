@@ -1,4 +1,4 @@
-export const UPDATE = async (url: string, token: unknown, body: unknown) => {
+export const UPDATE = async (url: string,  data: unknown, token: unknown,) => {
   try {
     const response = await fetch(url, {
       method: "PUT",
@@ -6,7 +6,7 @@ export const UPDATE = async (url: string, token: unknown, body: unknown) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(data),
     });
 
     if (response.ok) {

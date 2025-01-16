@@ -43,10 +43,10 @@ export default function Register() {
 
     if (result.success) {
       navigate("/login");
+      
     } else {
       console.error("Erro ao registrar usuário:", result.message);
       console.log(form);
-      
     }
   };
 

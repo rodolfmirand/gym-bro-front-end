@@ -3,6 +3,7 @@ import style from "./group_routine.module.sass";
 import { GET } from "../../../../core/services/get";
 import { Post } from "../../../../core/services/post-auth";
 import RoutineRadio from "../card-routine-radio/routine_radio";
+import { DELETE } from "../../../../core/services/delete";
 
 interface GroupRoutineRecord {
   personId: string | unknown;
@@ -16,7 +17,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
   const [routines, setRoutines] = useState<{ name: string; id: string }[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [routineId, setRoutineId] = useState<string | null>(null);
-
+  const [deleting, setDeleting] = useState<boolean>(false);
 
   const fetchRoutines = useCallback(async () => {
     try {
@@ -45,16 +46,11 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
     }
   }, [personId, routineId, onRoutineId]);
 
-  const handleRoutine = (id: string) => {
-    setRoutineId(id);
-    onRoutineId(id);
-  };
-
   useEffect(() => {
     fetchRoutines();
   }, [fetchRoutines]);
 
-  const handleClick = async () => {
+  const handleClickCreate = async () => {
     setLoading(true);
     try {
       const result = await Post(
@@ -75,29 +71,74 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
     }
   };
 
-  return (
-    <div className={style.group_routine}>
-      {loading ? (
-        <p>Carregando rotinas...</p>
-      ) : routines.length > 0 ? (
-        routines.map((routine) => (
-          <RoutineRadio
-            key={routine.id}
-            day={routine.name}
-            id={routine.id}
-            onClick={handleRoutine}
-            checked={routineId === routine.id}
-          />
-        ))
-      ) : (
-        <p>Nenhuma rotina encontrada.</p>
-      )}
+  const handleRoutine = async (idRoutine: string) => {
+    if (deleting) {
+      setLoading(true);
+      try {
+        const result = await DELETE(
+          `http://localhost:8080/gymbro/daily/${idRoutine}/${localStorage.getItem(
+            "workoutRoutineId"
+          )}`,
+          localStorage.getItem("token")
+        );
 
-      {routines.length < 5 && (
-        <button className={style.createRoutine}  onClick={handleClick} disabled={loading}>
-          <i className="fi fi-rs-plus"></i>
-        </button>
-      )}
+        if (result.success) {
+          fetchRoutines();
+        } else {
+          fetchRoutines(); // Remover no futuro
+          console.error("Erro ao buscar rotinas:", result.message);
+        }
+      } catch (error) {
+        console.error("Erro na solicitação:", error);
+      } finally {
+        setDeleting(false);
+        setLoading(false);
+      }
+    } else {
+      setRoutineId(idRoutine);
+      onRoutineId(idRoutine);
+    }
+  };
+
+  const handleClickDelete = async () => {
+    setDeleting((prev) => !prev);
+  };
+
+  return (
+    <div className={style.group_routine_container}>
+      <div className={style.group_routine_options}>
+        {routines.length > 1 && (
+          <button onClick={handleClickDelete}>
+            <i className="fi fi-rs-trash"></i>
+          </button>
+        )}
+        {routines.length < 5 && (
+          <button
+            className={style.createRoutine}
+            onClick={handleClickCreate}
+            disabled={loading}
+          >
+            <i className="fi fi-rs-plus"></i>
+          </button>
+        )}
+      </div>
+      <div className={style.group_routine}>
+        {loading ? (
+          <p>Carregando rotinas...</p>
+        ) : routines.length > 0 ? (
+          routines.map((routine) => (
+            <RoutineRadio
+              key={routine.id}
+              day={routine.name}
+              id={routine.id}
+              onClick={() => handleRoutine(routine.id)}
+              checked={routineId === routine.id} 
+            />
+          ))
+        ) : (
+          <p>Nenhuma rotina encontrada.</p>
+        )}
+      </div>
     </div>
   );
 };

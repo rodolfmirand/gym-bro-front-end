@@ -11,14 +11,13 @@ export const Post = async (url: string, data: unknown) => {
     if (response.ok) {
       const responseData = await response.json();
       const data = responseData.data ? responseData.data : responseData;
-      return { success: true, data }; 
-
+      return { success: true, data };
     } else {
       console.error("Erro na requisição POST:", response.statusText);
-      return { success: false, message: response.statusText };
+      return { success: false, message: `Erro: ${response.statusText}` };
     }
   } catch (error) {
     console.error("Erro na requisição:", error);
-    return { success: false, message: error };
+    return { success: false, message: `Erro na requisição: ${error}` };
   }
 };

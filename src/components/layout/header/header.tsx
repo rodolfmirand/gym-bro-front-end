@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./header.module.sass";
 import { NavLink, useLocation } from "react-router-dom";
-import PopUpHome from "../../pages/home/popup_home/popup_home";
+import PopUpHome from "../../pages/home/popups/popup_home/popup_home";
+
 
 const Header: React.FC = () => {
   const local = useLocation();

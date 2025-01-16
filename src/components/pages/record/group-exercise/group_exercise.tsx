@@ -77,7 +77,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
       ) : exerciseCardio.length > 0 || exerciseBulding.length > 0 ? (
         <>
           {exerciseCardio.length > 0 && (
-            <div>
+            <>
               <h1>Cardio</h1>
               <div className={style.group_exercise}>
                 {exerciseCardio.map((c) => (
@@ -92,11 +92,11 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                   />
                 ))}
               </div>
-            </div>
+            </>
           )}
 
           {exerciseBulding.length > 0 && (
-            <div>
+            <>
               <h1>Bodybuilding</h1>
               <div className={style.group_exercise}>
                 {exerciseBulding.map((e) => (
@@ -113,7 +113,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
                   />
                 ))}
               </div>
-            </div>
+            </>
           )}
         </>
       ) : (
