@@ -31,7 +31,7 @@ const GroupMuscle: React.FC<GroupProps> = ({ onChange }) => {
           name={exercise.name}
           id={exercise.id}
           onChange={handleRadioChange}
-          checked={exercise.id === 'ABDOMINAL'}
+          checked={exercise.id === 'ABS'}
         />
       ))}
     </div>
