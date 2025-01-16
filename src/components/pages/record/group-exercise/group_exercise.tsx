@@ -4,6 +4,7 @@ import style from "./group_exercise.module.sass";
 import { GET } from "../../../../core/services/get";
 import Cardio from "../cardio/cardio";
 import { Link } from "react-router-dom";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 interface GroupExerciseProps {
   dailyId: string | unknown;
@@ -60,14 +61,19 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
     setLoading(newLoading);
     if (newLoading) {
       // Ativa o recarregamento ao mudar o estado de loading para true
-      setNeedsUpdate(true); 
+      setNeedsUpdate(true);
     }
   };
 
   return (
     <div className={style.container_group}>
       {loading ? (
-        <p>Carregando rotinas...</p>
+        <DotLottieReact
+          className={style.animated_Icon}
+          src="https://lottie.host/dc467656-77ec-48df-a597-f3936ab89e78/UpBTTawhrL.lottie"
+          loop
+          autoplay
+        />
       ) : exerciseCardio.length > 0 || exerciseBulding.length > 0 ? (
         <>
           {exerciseCardio.length > 0 && (
@@ -111,10 +117,17 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
           )}
         </>
       ) : (
-        <p>
-          Nenhum exercício encontrado.{" "}
-          <Link to={"/exercise/bodybuilding"}>Clique aqui</Link>
-        </p>
+        <div className={style.notFound_container}>
+          <DotLottieReact
+            src="https://lottie.host/5dbd2f7d-5233-481d-a20d-043197ad8885/OLPcc1biFq.lottie"
+            loop
+            autoplay
+          />
+          <p>
+            Nenhum exercício encontrado.{" "}
+            <Link to={"/exercise/bodybuilding"}>Clique aqui</Link>
+          </p>
+        </div>
       )}
     </div>
   );
