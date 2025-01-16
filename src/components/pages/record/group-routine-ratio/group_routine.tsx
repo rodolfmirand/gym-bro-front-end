@@ -108,7 +108,11 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
       <div className={style.group_routine_options}>
         {routines.length > 1 && (
           <button onClick={handleClickDelete}>
-            <i className="fi fi-rs-trash"></i>
+            {deleting ? (
+              <i className="fi fi-rs-x"></i>
+            ) : (
+              <i className="fi fi-rs-trash"></i>
+            )}
           </button>
         )}
         {routines.length < 5 && (
