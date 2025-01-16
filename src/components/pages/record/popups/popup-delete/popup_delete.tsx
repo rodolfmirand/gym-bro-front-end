@@ -1,6 +1,7 @@
+import { DELETE } from "../../../../../core/services/delete";
 import style from "./popup_delete.module.sass";
 import Popup from "reactjs-popup";
-import { DELETE } from "../../../../core/services/delete";
+
 
 interface PopUpDeleteProps {
   exerciseId: string;
@@ -12,16 +13,16 @@ export default function PopUpDelete({
   onLoading,
 }: PopUpDeleteProps) {
   const handleDelete = async () => {
-    const response = await DELETE(
+    const result = await DELETE(
       `http://localhost:8080/gymbro/exercise/${exerciseId}`,
       localStorage.getItem("token")
     );
 
-    if (response.success) {
+    if (result.success) {
       // Recarregar GroupExercise após deletar
       onLoading(true);
     } else {
-      console.error(`Erro ao deletar: ${response.message}`);
+      console.error(`Erro ao deletar: ${result.message}`);
     }
   };
 

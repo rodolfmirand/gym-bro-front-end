@@ -1,5 +1,5 @@
 import 'reactjs-popup/dist/index.css';
-import RoutesControll from './routes/routes';
+import RoutesControll from './core/routes/routes';
 
 export default function App() {
 

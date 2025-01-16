@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { UPDATE } from "../../../../core/services/update";
+import { UPDATE } from "../../../../../core/services/update";
 import style from "./popup_edit.module.sass";
 import Popup from "reactjs-popup";
-import InputField from "../../../common/input/input";
-
+import InputField from "../../../../common/input/input";
 
 interface PopUpEditProps {
   exerciseId: string;
@@ -17,39 +16,33 @@ export default function PopUpEdit({
   const [formExercise, setFormExercise] = useState({
     name: "",
     equipment: "",
-    description: "",
     sets: "",
     reps: "",
     load: "",
-    rest: "1",
-    muscleGroup: "BICEPS",
-    videoUrl: "",
   });
 
   const [formCardio, setFormCardio] = useState({
     equipment: "",
     description: "",
     time: "",
-    videoUrl: "",
-    cardioExercise: "RUNNIMG",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const dataToSend = exerciseType === "cardio" ? formCardio : formExercise;
-
+    const formUpdate = exerciseType === "cardio" ? formCardio : formExercise;
+    console.log("Dados enviados:", formUpdate);
     const result = await UPDATE(
       `http://localhost:8080/gymbro/exercise/${exerciseId}`,
-      localStorage.getItem("token"),
-      dataToSend
+      formUpdate,
+      localStorage.getItem("token")
     );
 
     if (result.success) {
       console.log("Sucesso ao atualizar o exercício");
     } else {
-      console.error("Erro ao registrar exercício:", result.message);
-      console.log(dataToSend);
+      console.error("Erro ao registrar exercício:", result.message);  
+      console.log(formUpdate);
     }
   };
 
@@ -91,14 +84,14 @@ export default function PopUpEdit({
                 <div className={style.same_place}>
                   <InputField
                     label="equipment"
-                    placeholder="Enter the device to be used:"
+                    placeholder=""
                     type="text"
                     iconClass="fi fi-rs-stationary-bike"
                     onChange={handleChange}
                   />
                   <InputField
                     label="time"
-                    placeholder="Enter the duration in minutes:"
+                    placeholder=""
                     type="number"
                     iconClass="fi fi-rs-time-oclock"
                     onChange={handleChange}
@@ -117,14 +110,14 @@ export default function PopUpEdit({
                 <div className={style.same_place}>
                   <InputField
                     label="name"
-                    placeholder="Enter the name for the exercise:"
+                    placeholder=""
                     type="text"
                     iconClass="fi fi-rs-dumbbell-fitness"
                     onChange={handleChange}
                   />
                   <InputField
                     label="equipment"
-                    placeholder="Enter the device to be used:"
+                    placeholder=""
                     type="text"
                     iconClass="fi fi-rs-stationary-bike"
                     onChange={handleChange}

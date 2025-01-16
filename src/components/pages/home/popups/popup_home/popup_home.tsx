@@ -13,7 +13,7 @@ const PopUpHome: React.FC = () => {
         closeOnDocumentClick={false}
       >
         <div className={style.menu}>
-          <div className={style.menu_item}><PopUpLogout exerciseId={""}/></div>
+          <div className={style.menu_item}><PopUpLogout /></div>
         </div>
       </Popup>
     </>
