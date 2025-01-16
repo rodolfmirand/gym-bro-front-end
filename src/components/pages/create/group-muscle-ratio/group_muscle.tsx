@@ -1,4 +1,3 @@
-import { tr } from "motion/react-m";
 import MuscleRadio from "../card-muscle-radio/muscle_radio";
 import style from "./group_muscle.module.sass";
 
@@ -8,7 +7,7 @@ interface GroupProps {
 
 const GroupMuscle: React.FC<GroupProps> = ({ onChange }) => {
   const exercise = [
-    { id: "ABDOMINAL", name: "abdominal" },
+    { id: "ABS", name: "abdominal" },
     { id: "BACK", name: "back" },
     { id: "BICEPS", name: "biceps" },
     { id: "CHEST", name: "chest" },
