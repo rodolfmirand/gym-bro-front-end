@@ -40,9 +40,9 @@ export default function PopUpEdit({
     const dataToSend = exerciseType === "cardio" ? formCardio : formExercise;
 
     const result = await UPDATE(
-      `http://localhost:8080/gymbro/exercise/${exerciseType}/${exerciseId}`,
-      dataToSend,
-      localStorage.getItem("token")
+      `http://localhost:8080/gymbro/exercise/${exerciseId}`,
+      localStorage.getItem("token"),
+      dataToSend
     );
 
     if (result.success) {
