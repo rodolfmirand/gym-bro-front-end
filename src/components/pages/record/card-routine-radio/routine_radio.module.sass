@@ -27,7 +27,25 @@
         h4
             color: white
 
-.deleting_mode
-    background-color: #ffe6e6
+.deleting
+    animation: tilt-shaking 0.25s ease-in-out infinite
+    label
+        border: 1px solid #b92929
 
+    label:hover
+        background-color: #ee94941e
 
+    input:checked + label
+        background-color: #b92929
+
+@keyframes tilt-shaking
+    0%
+        transform: rotate(0deg)
+    25%
+        transform: rotate(2deg)
+    50%
+        transform: rotate(0eg)
+    75%
+        transform: rotate(-2deg)
+    100%
+        transform: rotate(0deg)

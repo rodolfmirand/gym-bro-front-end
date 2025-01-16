@@ -77,7 +77,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
       try {
         const result = await DELETE(
           `http://localhost:8080/gymbro/daily/${idRoutine}/${localStorage.getItem(
-            "workoutRoutineId"
+            "userId"
           )}`,
           localStorage.getItem("token")
         );
@@ -85,7 +85,6 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
         if (result.success) {
           fetchRoutines();
         } else {
-          fetchRoutines(); // Remover no futuro
           console.error("Erro ao buscar rotinas:", result.message);
         }
       } catch (error) {
@@ -132,7 +131,8 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
               day={routine.name}
               id={routine.id}
               onClick={() => handleRoutine(routine.id)}
-              checked={routineId === routine.id} 
+              checked={routineId === routine.id}
+              className={deleting ? "deleting" : ""}
             />
           ))
         ) : (

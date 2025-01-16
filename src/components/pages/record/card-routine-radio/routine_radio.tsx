@@ -1,5 +1,5 @@
 import style from "./routine_radio.module.sass";
-import classNames from "classnames"; 
+
 
 interface RoutineProps {
   day: string;
@@ -21,7 +21,7 @@ const RoutineRadio: React.FC<RoutineProps> = ({
   };
 
   return (
-    <div className={style.routine_radio}>
+    <div className={`${style.routine_radio} ${className ? style[className] : ""}`}>
       <input
         type="radio"
         id={`radio-${day}`}
