@@ -42,11 +42,7 @@ export default function Register() {
     const result = await Post("http://localhost:8080/gymbro/person", form);
 
     if (result.success) {
-      localStorage.setItem("userId", result.data.person.id);
-      localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
-      localStorage.setItem("token", result.data.access.token);
-
-      navigate("/home");
+      navigate("/login");
     } else {
       console.error("Erro ao registrar usuário:", result.message);
       console.log(form);
