@@ -55,7 +55,9 @@ Muscle icons created by cube29: https://www.flaticon.com/free-icons/muscle
 
 ### Dependecias:
 ```js
-  npm install sass;
-  npm install motionjs;
+  npm install typescript
+  npm install sass
+  npm install motionjs
+  npm install reactjs-popup
 ```
 
