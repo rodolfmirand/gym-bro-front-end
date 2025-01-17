@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { UPDATE } from "../../../../../core/services/update";
 import style from "./popup_edit.module.sass";
 import Popup from "reactjs-popup";
-import InputField from "../../../../common/input/input";
 import { GET } from "../../../../../core/services/get";
+import InputField from "../../../../common/input-edit/input";
 
 interface PopUpEditProps {
   exerciseId: string;
@@ -16,7 +16,20 @@ export default function PopUpEdit({
   exerciseType,
   onLoading,
 }: PopUpEditProps) {
-  
+  const [formExercise, setFormExercise] = useState({
+    name: "",
+    equipment: "",
+    sets: "",
+    reps: "",
+    load: "",
+  });
+
+  const [formCardio, setFormCardio] = useState({
+    equipment: "",
+    description: "",
+    time: "",
+  });
+
   useEffect(() => {
     const fetchRoutines = async () => {
       try {
@@ -39,20 +52,6 @@ export default function PopUpEdit({
 
     fetchRoutines();
   }, [exerciseId, exerciseType]);
-
-  const [formExercise, setFormExercise] = useState({
-    name: "",
-    equipment: "",
-    sets: "",
-    reps: "",
-    load: "",
-  });
-
-  const [formCardio, setFormCardio] = useState({
-    equipment: "",
-    description: "",
-    time: "",
-  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,6 +105,7 @@ export default function PopUpEdit({
                   label="equipment"
                   placeholder=""
                   type="text"
+                  value={formCardio.equipment}
                   iconClass="fi fi-rs-stationary-bike"
                   onChange={handleChange}
                 />
@@ -115,6 +115,7 @@ export default function PopUpEdit({
                   type="number"
                   iconClass="fi fi-rs-time-oclock"
                   onChange={handleChange}
+                  value={formCardio.time}
                 />
               </div>
               <InputField
@@ -123,6 +124,7 @@ export default function PopUpEdit({
                 type="text"
                 iconClass="fi fi-rs-notebook-alt"
                 onChange={handleChange}
+                value={formCardio.description}
               />
             </>
           ) : (
@@ -134,6 +136,7 @@ export default function PopUpEdit({
                   type="text"
                   iconClass="fi fi-rs-dumbbell-fitness"
                   onChange={handleChange}
+                  value={formExercise.name}
                 />
                 <InputField
                   label="equipment"
@@ -141,6 +144,7 @@ export default function PopUpEdit({
                   type="text"
                   iconClass="fi fi-rs-stationary-bike"
                   onChange={handleChange}
+                  value={formExercise.equipment}
                 />
               </div>
               <div className={style.same_place}>
@@ -150,6 +154,7 @@ export default function PopUpEdit({
                   type="number"
                   iconClass="fi fi-rs-memo-pad"
                   onChange={handleChange}
+                  value={formExercise.sets}
                 />
                 <InputField
                   label="reps"
@@ -157,6 +162,7 @@ export default function PopUpEdit({
                   type="number"
                   iconClass="fi fi-rs-endless-loop"
                   onChange={handleChange}
+                  value={formExercise.reps}
                 />
                 <InputField
                   label="load"
@@ -164,6 +170,7 @@ export default function PopUpEdit({
                   type="number"
                   iconClass="fi fi-rs-gym"
                   onChange={handleChange}
+                  value={formExercise.load}
                 />
               </div>
             </>

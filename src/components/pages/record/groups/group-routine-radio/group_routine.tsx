@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import style from "./group_routine.module.sass";
-import { GET } from "../../../../core/services/get";
-import { Post } from "../../../../core/services/post-auth";
-import RoutineRadio from "../card-routine-radio/routine_radio";
-import { DELETE } from "../../../../core/services/delete";
+import { DELETE } from "../../../../../core/services/delete";
+import { GET } from "../../../../../core/services/get";
+import RoutineRadio from "../../cards/card-routine-radio/routine_radio";
+import { POST } from "../../../../../core/services/post-auth";
+
 
 interface GroupRoutineRecord {
   personId: string | unknown;
@@ -53,7 +54,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
   const handleClickCreate = async () => {
     setLoading(true);
     try {
-      const result = await Post(
+      const result = await POST(
         `http://localhost:8080/gymbro/daily/${localStorage.getItem("userId")}`,
         {},
         localStorage.getItem("token")

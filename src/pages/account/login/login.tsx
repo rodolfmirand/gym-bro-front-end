@@ -1,8 +1,8 @@
 import { useState } from "react";
-import InputField from "../../../components/common/input/input";
 import style from "./login.module.sass";
 import { Link, useNavigate } from "react-router-dom";
 import { Post } from "../../../core/services/post";
+import InputField from "../../../components/common/input/input";
 
 export default function Login() {
   const [form, setForm] = useState({

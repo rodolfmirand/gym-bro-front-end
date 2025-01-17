@@ -1,10 +1,10 @@
 // CreateCardio.tsx
 import React, { useState } from "react";
 import InputField from "../../../common/input/input";
-import GroupCadio from "../group-cardio-ratio/group_cardio";
-import GroupRoutineCreate from "../group-routine-create-ratio/group_routine_create";
 import style from "./create_cardio.module.sass";
-import { Post } from "../../../../core/services/post-auth";
+import { POST } from "../../../../core/services/post-auth";
+import GroupCadio from "../groups/group-cardio-radio/group_cardio";
+import GroupRoutineCreate from "../groups/group-routine-create-ratio/group_routine_create";
 
 export default function CreateCardio() {
   const [form, setForm] = useState({
@@ -35,7 +35,7 @@ export default function CreateCardio() {
     e.preventDefault();
 
     if (routineId) {
-      const result = await Post(
+      const result = await POST(
         `http://localhost:8080/gymbro/daily/cardio/${routineId}`,
         form,
         localStorage.getItem("token")
@@ -96,7 +96,9 @@ export default function CreateCardio() {
                 onRoutineId={handleRoutineId}
               />
             </div>
-            <button className={style.submit} type="submit">Create</button>
+            <button className={style.submit} type="submit">
+              Create
+            </button>
           </form>
         </div>
       </div>

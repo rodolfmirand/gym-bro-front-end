@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Exercise from "../exercise/exercise";
 import style from "./group_exercise.module.sass";
-import { GET } from "../../../../core/services/get";
-import Cardio from "../cardio/cardio";
 import { Link } from "react-router-dom";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { GET } from "../../../../../core/services/get";
+import Cardio from "../../cards/card-cardio/cardio";
+import Exercise from "../../cards/card-exercise/exercise";
 
 interface GroupExerciseProps {
   dailyId: string | unknown;
@@ -134,5 +134,3 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
 };
 
 export default GroupExercise;
-
-

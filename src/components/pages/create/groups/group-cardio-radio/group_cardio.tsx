@@ -1,4 +1,5 @@
-import MuscleRadio from "../card-muscle-radio/muscle_radio";
+
+import MuscleRadio from "../../cards/card-muscle-radio/muscle_radio";
 import style from "./group_cardio.module.sass";
 
 interface GroupProps {

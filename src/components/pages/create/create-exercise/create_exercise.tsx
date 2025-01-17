@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Post } from "../../../../core/services/post-auth";
+import { POST } from "../../../../core/services/post-auth";
 import InputField from "../../../common/input/input";
-import GroupMuscle from "../group-muscle-ratio/group_muscle";
-import GroupRoutineCreate from "../group-routine-create-ratio/group_routine_create";
+
 
 import style from "./create_exercise.module.sass";
+import GroupMuscle from "../groups/group-muscle-radio/group_muscle";
+import GroupRoutineCreate from "../groups/group-routine-create-ratio/group_routine_create";
 
 export default function CreateExercise() {
   const [form, setForm] = useState({
@@ -48,7 +49,7 @@ export default function CreateExercise() {
     e.preventDefault();
 
     if (routineId) {
-      const result = await Post(
+      const result = await POST(
         `http://localhost:8080/gymbro/daily/bodybuilding/${routineId}`,
         form,
         localStorage.getItem("token")

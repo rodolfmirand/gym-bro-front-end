@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import style from "./group_routine_create.module.sass";
-import { GET } from "../../../../core/services/get";
-import RoutineRadioCreate from "../card-routine-create-radio/routine_radio";
-import { Post } from "../../../../core/services/post-auth";
+import { GET } from "../../../../../core/services/get";
+import RoutineRadioCreate from "../../cards/card-routine-create-radio/routine_radio";
+import { POST } from "../../../../../core/services/post-auth";
+
 
 interface GroupRoutineCreateProps {
   personId: string | unknown;
@@ -16,8 +17,7 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
   const [routines, setRoutines] = useState<{ name: string; id: string }[]>([]);
   const [routineId, setRoutineId] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const token = localStorage.getItem("token");
-
+ 
   const fetchRoutines = useCallback(async () => {
     try {
       const result = await GET(
@@ -56,12 +56,12 @@ const GroupRoutineCreate: React.FC<GroupRoutineCreateProps> = ({
   const handleClick = async () => {
     setLoading(true);
     try {
-      const result = await Post(
+      const result = await POST(
         `http://localhost:8080/gymbro/daily/${localStorage.getItem(
           "userId"
         )}`,
         {},
-        token
+        localStorage.getItem("token")
       );
 
       if (result.success) {

@@ -8,7 +8,7 @@ import CreateCardio from "../../components/pages/create/create-cardio/create_car
 import CreateExercise from "../../components/pages/create/create-exercise/create_exercise";
 import Create from "../../pages/structure/create/create";
 import Record from "../../pages/structure/record/record";
-import PageNotFound from "../../pages/not-found/notFound";
+import PageNotFound from "../../pages/structure/not-found/notFound";
 
 export default function RoutesControll() {
   return (

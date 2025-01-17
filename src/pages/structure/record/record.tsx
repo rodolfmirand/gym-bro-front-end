@@ -1,7 +1,7 @@
 import { useState } from "react";
-import GroupExercise from "../../../components/pages/record/group-exercise/group_exercise";
-import GroupRoutine from "../../../components/pages/record/group-routine-ratio/group_routine";
 import style from "./record.module.sass";
+import GroupRoutine from "../../../components/pages/record/groups/group-routine-radio/group_routine";
+import GroupExercise from "../../../components/pages/record/groups/group-exercise/group_exercise";
 
 
 export default function Record() {
