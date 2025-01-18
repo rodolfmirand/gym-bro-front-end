@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./login.module.sass";
 import { Link, useNavigate } from "react-router-dom";
-import { Post } from "../../../core/services/post";
+import { POST } from "../../../core/services/post";
 import InputField from "../../../components/common/input/input";
 
 export default function Login() {
@@ -20,7 +20,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = await Post("http://localhost:8080/gymbro/auth/login", form);
+    const result = await POST("http://localhost:8080/gymbro/auth/login", form);
 
     if (result.success) {
       localStorage.setItem("userId", result.data.person.id);

@@ -12,7 +12,7 @@ export default function CreateCardio() {
     description: "",
     time: "",
     videoUrl: "",
-    cardioExercise: "",
+    cardioExercise: "CYCLING",
   });
 
   const userId = localStorage.getItem("userId");
