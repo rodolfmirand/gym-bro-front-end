@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputField from "../../../components/common/input/input";
 import style from "./register.module.sass";
 import { Link, useNavigate } from "react-router-dom";
-import { Post } from "../../../core/services/post";
+import { POST } from "../../../core/services/post";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -39,7 +39,7 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = await Post("http://localhost:8080/gymbro/person", form);
+    const result = await POST("http://localhost:8080/gymbro/person", form);
 
     if (result.success) {
       navigate("/login");

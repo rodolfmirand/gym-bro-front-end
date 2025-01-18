@@ -20,7 +20,6 @@ const GroupMuscle: React.FC<GroupProps> = ({ onChange }) => {
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
     
-    
   };
 
   return (

@@ -1,13 +1,13 @@
 import style from "./popup_logout.module.sass";
 import Popup from "reactjs-popup";
-import { Post } from "../../../../../core/services/post-auth";
+import { POST } from "../../../../../core/services/post-auth";
 import { useNavigate } from "react-router-dom";
 
 
 export default function PopUpLogout() {
   const navigate = useNavigate();
   const handleDelete = async () => {
-    const response = await Post(
+    const response = await POST(
       `http://localhost:8080/gymbro/auth/logout`, {}, localStorage.getItem('token')
     );
 
