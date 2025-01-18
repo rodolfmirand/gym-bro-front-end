@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { POST } from "../../../../core/services/post-auth";
 import InputField from "../../../common/input/input";
-
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import style from "./create_exercise.module.sass";
 import GroupMuscle from "../groups/group-muscle-radio/group_muscle";
 import GroupRoutineCreate from "../groups/group-routine-create-ratio/group_routine_create";
@@ -16,7 +17,7 @@ export default function CreateExercise() {
     reps: "",
     load: "",
     rest: "1",
-    muscleGroup: "",
+    muscleGroup: "ABS",
     videoUrl: "",
   });
 
@@ -56,19 +57,21 @@ export default function CreateExercise() {
       );
 
       if (result.success) {
-        console.log("Exercicio registrado com sucesso!");
+        toast.success("Exercicio registrado com sucesso!")
+
       } else {
         console.error("Erro ao registrar exercicio:", result.message);
-        console.log(form);
-        
+        console.log(form)
       }
     } else {
-      console.error("Nenhuma rotina selecionada.");
+       toast.warn("Nenhuma rotina selecionada.");
     }
   };
 
   return (
+   
     <div className={style.body_exercise}>
+       <ToastContainer position="top-center" theme="dark"/>
       <div className={style.muscleGroup_exercise}>
         <div className={style.text_exercise}>
           <h3>Select muscle group: </h3>
@@ -130,6 +133,7 @@ export default function CreateExercise() {
           </div>
 
           <button className={style.submit} type="submit">Create</button>
+          
         </form>
       </div>
     </div>
