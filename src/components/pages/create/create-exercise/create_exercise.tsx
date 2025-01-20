@@ -61,7 +61,7 @@ export default function CreateExercise() {
 
       } else {
         console.error("Erro ao registrar exercicio:", result.message);
-        console.log(form)
+        toast.warn("Ocorreu algum erro ao cadastrar o exercicio.");
       }
     } else {
        toast.warn("Nenhuma rotina selecionada.");

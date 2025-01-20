@@ -3,6 +3,7 @@ import style from "./popup_delete.module.sass";
 import Popup from "reactjs-popup";
 
 
+
 interface PopUpDeleteProps {
   exerciseId: string;
   onLoading: (loading: boolean) => void;

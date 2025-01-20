@@ -5,6 +5,10 @@ import style from "./create_cardio.module.sass";
 import { POST } from "../../../../core/services/post-auth";
 import GroupCadio from "../groups/group-cardio-radio/group_cardio";
 import GroupRoutineCreate from "../groups/group-routine-create-ratio/group_routine_create";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 
 export default function CreateCardio() {
   const [form, setForm] = useState({
@@ -42,18 +46,20 @@ export default function CreateCardio() {
       );
 
       if (result.success) {
-        console.log("Exercicio registrado com sucesso!");
+        toast.success("Exercicio registrado com sucesso!")
       } else {
         console.error("Erro ao registrar exercicio:", result.message);
+        toast.warn("Ocorreu algum erro ao cadastrar o exercicio.");
       }
     } else {
-      console.error("Nenhuma rotina selecionada.");
+      toast.warn("Nenhuma rotina selecionada.");
     }
   };
 
   return (
     <>
       <div className={style.body_exercise}>
+      <ToastContainer position="top-center" theme="dark"/>
         <div className={style.cardioGroup_exercise}>
           <div className={style.text_exercise}>
             <h3>Select the cardio: </h3>
