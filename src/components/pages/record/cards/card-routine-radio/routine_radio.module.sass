@@ -17,11 +17,10 @@
             text-align: center
 
     label:hover
-        background-color: index.$black_hover
+        background-color: index.$background_two
 
     input:checked + label
-        background-color: index.$background
-        border: 1px solid index.$background
+        background-color: index.$orange  
         transform: scale(1.1)
 
         h4
@@ -31,13 +30,13 @@
     animation: tilt-shaking .2s ease infinite
 
     label
-        border: 1px solid #b92929
+        border: 1px solid index.$red
 
     label:hover
-        background-color: #b92929
+        background-color: index.$red
 
     input:checked + label
-        background-color: #b92929
+        background-color: index.$red
 
 @keyframes tilt-shaking
     0%

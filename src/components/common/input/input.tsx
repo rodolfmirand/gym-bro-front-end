@@ -6,14 +6,15 @@ interface InputProps {
   placeholder: string;
   type: string;
   iconClass: string;
+  color: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<InputProps> = ({label, placeholder, type, iconClass, onChange}) => {
+const InputField: React.FC<InputProps> = ({label, placeholder, type, iconClass, onChange, color}) => {
   return (
     <label htmlFor={label}>
       {label}:
-      <div className={style.input_body}>
+      <div className={style.input_body} style={{ backgroundColor: color }}>
         <i className={iconClass}></i>
         <input
           type={type}

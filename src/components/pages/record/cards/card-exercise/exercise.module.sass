@@ -1,5 +1,5 @@
 .body_exercise
-    background-color: index.$background
+    background-color: index.$background_two
     width: 100%
     padding: .4rem
     font-size: .8rem
@@ -8,16 +8,23 @@
     .info_exercise
         display: flex
         justify-content: space-between
-        background-color: index.$background_two
+        background-color: index.$background_three
         border-radius: 12px
-        padding: 1rem
-
-        .subtext_exercise
+        padding: .8rem
+        .content_exercise
             display: flex
             gap: .6rem
+            align-items: center
 
-        i
-            cursor: pointer
+            img
+                width: 40px
+                height: 40px
+
+            .subtext_exercise
+                @extend .content_exercise
+
+            i
+                cursor: pointer
 
     .current_exercise
         padding: .4rem

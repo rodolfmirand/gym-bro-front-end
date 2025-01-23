@@ -83,22 +83,20 @@ export default function CreateExercise() {
         <div className={style.text_exercise}>
           <h3>Register the exercise: </h3>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <div className={style.same_place}>
             <InputField
               label="name"
               placeholder="Enter the name for the exercise:"
               type="text"
               iconClass="fi fi-rs-dumbbell-fitness"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={"#2D2D2F"}            />
             <InputField
               label="equipment"
               placeholder="Enter the device to be used:"
               type="text"
               iconClass="fi fi-rs-stationary-bike"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={"#2D2D2F"}            />
           </div>
           <div className={style.same_place}>
             <InputField
@@ -106,22 +104,19 @@ export default function CreateExercise() {
               placeholder=""
               type="number"
               iconClass="fi fi-rs-memo-pad"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={"#2D2D2F"}            />
             <InputField
               label="reps"
               placeholder=""
               type="number"
               iconClass="fi fi-rs-endless-loop"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={"#2D2D2F"}            />
             <InputField
               label="load"
               placeholder=""
               type="number"
               iconClass="fi fi-rs-gym"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={"#2D2D2F"}            />
           </div>
 
           <div className={style.routine_day}>

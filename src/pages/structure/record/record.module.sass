@@ -3,8 +3,8 @@
     width: 45%
     height: 100%
     padding: 1rem
-
-     
+    margin-top: 70px
+    z-index: 2
     .title_exercise
         text-align: start
         margin-bottom: .8rem
@@ -13,5 +13,18 @@
 
     .container_exercise
         @include index.flexCenter(column, start)
-        padding: .5rem
+        padding: .5rem 16px
         gap: 1rem
+        overflow-y: auto
+        height: 68vh
+
+        &::-webkit-scrollbar
+            width: 5px
+
+        &::-webkit-scrollbar-track
+            background-color: transparent
+
+        &::-webkit-scrollbar-thumb
+            background-color: index.$background
+            border-radius: 20px
+     

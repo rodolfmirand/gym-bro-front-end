@@ -3,20 +3,24 @@ header.header
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 1rem 6rem
-    background-color: index.$background_two
+    position: fixed
+    top: 0%
+    z-index: 1
+    padding: .5rem 6rem
+    background-color: transparent
+
     img
-        width: 60px
-        height: 60px
-        background-color: index.$background_two
+        width: 80px
+        height: 80px
+    .user_container
+        @include index.flexCenter(row, center)
+        
+        i
+            color: index.$gray
+            cursor: pointer
+            font-size: 18px
+            padding: 1.25rem
+            transition: .3s ease
 
-    i
-        color: index.$gray
-        cursor: pointer
-        font-size: 18px
-        padding: 1.25rem
-        transition: .3s ease
-
-    i:hover
-        background-color: index.$background
-        color: white
+        i:hover
+            color: white

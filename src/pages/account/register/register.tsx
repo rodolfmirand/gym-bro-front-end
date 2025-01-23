@@ -67,7 +67,7 @@ export default function Register() {
             <p>Wellcome to your training manager.</p>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="off">
             <div className={style.same_place}>
               <InputField
                 label="name"

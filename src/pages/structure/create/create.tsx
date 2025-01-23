@@ -22,7 +22,7 @@ export default function Create() {
   }, [location]);
 
   return (
-    <div className={style.container_record}>
+    <div className={style.container_create}>
       <div className={style.section_title}>
         <h1>Exercise building</h1>
       </div>

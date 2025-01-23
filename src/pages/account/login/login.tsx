@@ -24,6 +24,7 @@ export default function Login() {
 
     if (result.success) {
       localStorage.setItem("userId", result.data.person.id);
+      localStorage.setItem("userName", result.data.person.name);
       localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
       localStorage.setItem("token", result.data.access.token);
       navigate("/home");
@@ -50,7 +51,7 @@ export default function Login() {
             <h1>Welcome back!</h1>
             <p>Let's train today!</p>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="off">
             <InputField
               label="username"
               placeholder="Enter your username:"

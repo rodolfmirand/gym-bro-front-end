@@ -3,9 +3,16 @@
     display: flex
     gap: .5rem
     flex-direction: column
-    background-color: index.$background
-    border: 1px solid index.$background_two
+    background-color: index.$background_two
+    border: 1px solid index.$background_three
     border-radius: 8px
 
-    &_item
+    &_item:nth-child(1)
+        display: flex
+        gap: .6rem
+        transition: .3s
+        align-items: center
+        @include index.fontStyle(14px, 600)
+        padding: .6rem
+        width: 100%
         cursor: pointer

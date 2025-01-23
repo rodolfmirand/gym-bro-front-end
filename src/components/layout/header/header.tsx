@@ -12,7 +12,11 @@ const Header: React.FC = () => {
       return (
         <>
           <img src="/assets/logo.svg" alt="" />
-          <PopUpHome />
+          <div className={style.user_container}>
+            <p>{localStorage.getItem("userName")}</p>
+            <PopUpHome />
+          </div>
+          
         </>
       );
     } else {

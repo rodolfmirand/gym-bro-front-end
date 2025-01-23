@@ -25,7 +25,7 @@ export default function PopUpLogout() {
         modal
         trigger={
           <button className={style.button}>
-            <i className="fi fi-rs-sign-out-alt"></i> Logout{" "}
+            <i className="fi fi-rs-running"></i> Logout{" "}
           </button>
         }
         nested

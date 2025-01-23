@@ -4,6 +4,7 @@ import style from "./popup_edit.module.sass";
 import Popup from "reactjs-popup";
 import { GET } from "../../../../../core/services/get";
 import InputField from "../../../../common/input-edit/input";
+import MuscleSimple from "../../cards/card-muscle-simple/muscle_simple";
 
 interface PopUpEditProps {
   exerciseId: string;
@@ -19,6 +20,7 @@ export default function PopUpEdit({
   const [formExercise, setFormExercise] = useState({
     name: "",
     equipment: "",
+    muscleGroup: "",
     sets: "",
     reps: "",
     load: "",
@@ -28,6 +30,7 @@ export default function PopUpEdit({
     equipment: "",
     description: "",
     time: "",
+    cardioExercise: "",
   });
 
   useEffect(() => {
@@ -94,10 +97,26 @@ export default function PopUpEdit({
   const renderPopupContent = (close: () => void) => (
     <div className={style.modal}>
       <div className={style.header}>
-        <h3>Edit your exercise:</h3>
+        <div className={style.header_background}></div>
+        {exerciseType === "cardio" ? (
+          <>
+            <MuscleSimple
+              name={formCardio.cardioExercise}
+              id={formCardio.cardioExercise}
+            />
+          </>
+        ) : (
+          <>
+            <MuscleSimple
+              name={formExercise.muscleGroup}
+              id={formExercise.muscleGroup}
+            />
+          </>
+        )}
+        <h3>Edit your exercise</h3>
       </div>
       <div className={style.content}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           {exerciseType === "cardio" ? (
             <>
               <div className={style.same_place}>
