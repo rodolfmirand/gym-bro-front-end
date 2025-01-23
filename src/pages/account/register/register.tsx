@@ -42,7 +42,8 @@ export default function Register() {
     const result = await POST("http://localhost:8080/gymbro/person", form);
 
     if (result.success) {
-      navigate("/login");
+      console.log(form);
+
     } else {
       console.error("Erro ao registrar usuário:", result.message);
       console.log(form);
@@ -74,52 +75,45 @@ export default function Register() {
                 placeholder="Eduardo Octávio"
                 type="text"
                 iconClass="fi fi-rs-dumbbell-weightlifting"
-                onChange={handleChange}
-              />
+                onChange={handleChange} color={""} />
               <InputField
                 label="username"
                 placeholder="Nickname"
                 type="text"
                 iconClass="fi fi-rs-user-ninja"
-                onChange={handleChange}
-              />
+                onChange={handleChange} color={""} />
             </div>
             <InputField
               label="email"
               placeholder="email@site.com"
               type="email"
               iconClass="fi fi-rs-envelope"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={""} />
             <InputField
               label="password"
               placeholder="Create your best password:"
               type="password"
               iconClass="fi fi-rs-lock"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={""} />
             <InputField
               label="birthDate"
               placeholder="22/01/2005"
               type="data"
               iconClass="fi fi-rs-cake-birthday "
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={""} />
             <div className={style.same_place}>
               <InputField
                 label="weight"
                 placeholder="83 Kg"
                 type="number"
                 iconClass="fi fi-rs-scale"
-                onChange={handleChange}
-              />
+                onChange={handleChange} color={""} />
               <InputField
                 label="height"
                 placeholder="184 Cm"
                 type="number"
                 iconClass="fi fi-rs-measuring-tape"
-                onChange={handleChange}
-              />
+                onChange={handleChange} color={""} />
             </div>
             <button type="submit">Explore Gymbro</button>
           </form>

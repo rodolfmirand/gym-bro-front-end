@@ -28,7 +28,7 @@ export default function Login() {
       localStorage.setItem("workoutRoutineId", result.data.person.workoutRoutine.id);
       localStorage.setItem("token", result.data.access.token);
       navigate("/home");
-      
+
     } else {
       console.error("Erro no login:", result.message);
     }
@@ -43,7 +43,7 @@ export default function Login() {
           muted
           loop
         ></video>
-  
+
       </div>
       <div className={style.container_login}>
         <div className={style.container_form}>
@@ -57,15 +57,13 @@ export default function Login() {
               placeholder="Enter your username:"
               type="text"
               iconClass="fi fi-rs-envelope"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={""} />
             <InputField
               label="password"
               placeholder="Enter your password:"
               type="password"
               iconClass="fi fi-rs-lock"
-              onChange={handleChange}
-            />
+              onChange={handleChange} color={""} />
             <button type="submit">Let's Train</button>
           </form>
         </div>
