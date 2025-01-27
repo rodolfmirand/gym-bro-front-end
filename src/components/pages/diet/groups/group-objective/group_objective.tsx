@@ -1,4 +1,4 @@
-import DietRadio from "../../card-ratio/diet_radio";
+import DietRadio from "../../cards/card-ratio/diet_radio";
 import style from "../group_diet.module.sass";
 
 interface GroupProps {

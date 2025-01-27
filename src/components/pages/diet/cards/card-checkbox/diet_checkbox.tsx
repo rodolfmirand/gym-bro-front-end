@@ -1,17 +1,16 @@
-import style from "../../create/cards/card-muscle-radio/muscle_radio.module.sass";
+import style from "../../../create/cards/card-muscle-radio/muscle_radio.module.sass";
 
 interface DietRadioProps {
   name: string;
   id: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  checked: boolean
   type: string
 }
 
-const DietRadio: React.FC<DietRadioProps> = ({ name, id, onChange, checked, type}) => {
+const DietCheckbox: React.FC<DietRadioProps> = ({ name, id, onChange, type}) => {
   return (
     <div className={style.card_radio}>
-      <input type="radio" id={`radio-${id}`} name={`${type}-option`} onChange={onChange} value={id} defaultChecked={checked}/>
+      <input type="checkbox" id={`radio-${id}`} name={`${type}-option`} onChange={onChange} value={id} />
       <label htmlFor={`radio-${id}`}>
         <h4>{name}</h4>
         <img
@@ -23,4 +22,4 @@ const DietRadio: React.FC<DietRadioProps> = ({ name, id, onChange, checked, type
   );
 };
 
-export default DietRadio;
+export default DietCheckbox;

@@ -1,4 +1,5 @@
-import DietRadio from "../../card-ratio/diet_radio";
+
+import DietCheckbox from "../../cards/card-checkbox/diet_checkbox";
 import style from "../group_diet.module.sass";
 
 interface GroupProps {
@@ -20,12 +21,11 @@ const GroupRestrictions: React.FC<GroupProps> = ({ onChange }) => {
   return (
     <div className={style.group_diet}>
       {restrictions.map((restrictions) => (
-        <DietRadio
+        <DietCheckbox
           key={restrictions.id}
           name={restrictions.name}
           id={restrictions.id}
           onChange={handleRadioChange}
-          checked={restrictions.id === "LACTOSE_INTOLERANCE"}
           type={"restrictions"}
         />
       ))}
