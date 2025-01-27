@@ -9,6 +9,7 @@ import CreateExercise from "../../components/pages/create/create-exercise/create
 import Create from "../../pages/structure/create/create";
 import Record from "../../pages/structure/record/record";
 import PageNotFound from "../../pages/structure/not-found/notFound";
+import Diet from "../../pages/structure/diet/diet";
 
 export default function RoutesControll() {
   return (
@@ -20,14 +21,15 @@ export default function RoutesControll() {
         </Route>
 
         <Route path="" element={<Main />}>
-          <Route path="/home" element={<Home />} />
           <Route index element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/record" element={<Record />} />
           <Route path="/exercise" element={<Create />}>
             <Route index element={<Navigate to="bodybuilding" />} />
             <Route path="bodybuilding" element={<CreateExercise />} />
             <Route path="cardio" element={<CreateCardio />} />
           </Route>
+          <Route path="/diet" element={<Diet />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

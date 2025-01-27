@@ -13,7 +13,7 @@ const GroupHome: React.FC = () => {
       video: "https://assets.mixkit.co/videos/606/606-720.mp4",
     },
     {
-      link: "/exercise",
+      link: "/diet",
       text: "Montar Dieta",
       video: "",
     },

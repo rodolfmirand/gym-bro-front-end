@@ -1,0 +1,33 @@
+
+.container_diet
+    width: 45%
+    height: 100%
+    padding: 1rem
+    margin-top: 85px
+
+    .section_title
+        padding-bottom: 1rem
+        @include index.fontStyle(20px, 800)
+
+    .container_options
+        width: 100%
+
+        .container_groups
+            display: flex
+            font-size: .8rem
+            border-radius: 12px
+            padding: 1rem
+            background-color: index.$background_two
+            gap: 1.5rem
+            flex-direction: column
+            margin-bottom: 1.5rem
+
+    .submit
+        background-color: index.$primary
+        padding: .8rem
+        width: 15rem
+        color: white
+        position: absolute
+        border-radius: 10px
+        @include index.fontStyle(14px, 700)
+        text-transform: uppercase
