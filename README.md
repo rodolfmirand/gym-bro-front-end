@@ -59,5 +59,6 @@ Muscle icons created by cube29: https://www.flaticon.com/free-icons/muscle
   npm install sass
   npm install motionjs
   npm install reactjs-popup
+  npm install react-input-mask
 ```
 
