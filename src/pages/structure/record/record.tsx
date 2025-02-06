@@ -18,7 +18,7 @@ export default function Record() {
           {/* Agrupamento das rotinas de exercicios */}
           <GroupRoutine personId={userId} onRoutineId={handleRoutineId} />
           <div className={style.title_exercise}>
-            <h1>Treino A</h1>
+            <h1>Exercises: </h1>
           </div>
         </div>
         {/* Agrupamento dos exercicios */}

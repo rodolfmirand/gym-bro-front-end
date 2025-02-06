@@ -9,7 +9,7 @@ interface GroupProps {
 const GroupRestrictions: React.FC<GroupProps> = ({ onChange }) => {
   const restrictions = [
     { id: "LACTOSE_INTOLERANCE", name: "lactose int." },
-    { id: "GLUTEN_INTOLERRANCE", name: "gluten int." },
+    { id: "GLUTEN_INTOLERANCE", name: "gluten int." },
     { id: "NUT_ALLERGY", name: "nut allergy" },
     { id: "SEAFOOD_ALLERGY", name: "seafood allergy" },
   ];

@@ -118,14 +118,9 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
         </>
       ) : (
         <div className={style.notFound_container}>
-          <DotLottieReact
-            src="https://lottie.host/5dbd2f7d-5233-481d-a20d-043197ad8885/OLPcc1biFq.lottie"
-            loop
-            autoplay
-          />
           <p>
             Nenhum exercício encontrado.{" "}
-            <Link to={"/exercise/bodybuilding"}>Clique aqui</Link>
+            <Link to={"/exercise/bodybuilding"}>Cadastre aqui</Link>
           </p>
         </div>
       )}

@@ -57,21 +57,19 @@ export default function CreateExercise() {
       );
 
       if (result.success) {
-        toast.success("Exercicio registrado com sucesso!")
-
+        toast.success("Exercicio registrado com sucesso!");
       } else {
         console.error("Erro ao registrar exercicio:", result.message);
         toast.warn("Ocorreu algum erro ao cadastrar o exercicio.");
       }
     } else {
-       toast.warn("Nenhuma rotina selecionada.");
+      toast.warn("Nenhuma rotina selecionada.");
     }
   };
 
   return (
-   
     <div className={style.body_exercise}>
-       <ToastContainer position="top-center" theme="dark"/>
+      <ToastContainer position="top-center" theme="dark" />
       <div className={style.muscleGroup_exercise}>
         <div className={style.text_exercise}>
           <h3>Select muscle group: </h3>
@@ -90,13 +88,17 @@ export default function CreateExercise() {
               placeholder="Enter the name for the exercise:"
               type="text"
               iconClass="fi fi-rs-dumbbell-fitness"
-              onChange={handleChange} color={"#2D2D2F"}            />
+              onChange={handleChange}
+              color={"#2D2D2F"}
+            />
             <InputField
               label="equipment"
               placeholder="Enter the device to be used:"
               type="text"
               iconClass="fi fi-rs-stationary-bike"
-              onChange={handleChange} color={"#2D2D2F"}            />
+              onChange={handleChange}
+              color={"#2D2D2F"}
+            />
           </div>
           <div className={style.same_place}>
             <InputField
@@ -104,19 +106,25 @@ export default function CreateExercise() {
               placeholder=""
               type="number"
               iconClass="fi fi-rs-memo-pad"
-              onChange={handleChange} color={"#2D2D2F"}            />
+              onChange={handleChange}
+              color={"#2D2D2F"}
+            />
             <InputField
               label="reps"
               placeholder=""
               type="number"
               iconClass="fi fi-rs-endless-loop"
-              onChange={handleChange} color={"#2D2D2F"}            />
+              onChange={handleChange}
+              color={"#2D2D2F"}
+            />
             <InputField
               label="load"
               placeholder=""
               type="number"
               iconClass="fi fi-rs-gym"
-              onChange={handleChange} color={"#2D2D2F"}            />
+              onChange={handleChange}
+              color={"#2D2D2F"}
+            />
           </div>
 
           <div className={style.routine_day}>
@@ -127,8 +135,9 @@ export default function CreateExercise() {
             />
           </div>
 
-          <button className={style.submit} type="submit">Create</button>
-          
+          <button className={style.submit} type="submit">
+            Create
+          </button>
         </form>
       </div>
     </div>

@@ -1,17 +1,26 @@
 .group_routine_container
 
-    .group_routine_options
-        @include index.flexCenter(row, end)
-        gap: 1rem
+    .header_routine_options
+        @include index.flexCenter(row, space-between)
+        @include index.backgroundStyle
+        
+        h1
+            font-size: 1rem
+            font-weight: 800
 
-        button
-            font-size: 1.05rem
+        .group_routine_options
+            @include index.flexCenter(row, end)
+            gap: 1rem
+
+            button
+                font-size: .8rem
+                padding: .6em
+                background-color: index.$background_three
 
     .group_routine
         @include index.flexCenter(row, center)
         gap: 1rem
-        padding: 2rem 0
+        padding: 1.5rem 0
 
     .createRoutine
         margin-left: .4rem
-

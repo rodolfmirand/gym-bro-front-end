@@ -2,7 +2,7 @@
 .button
     display: flex
     gap: .6rem
-    transition: .3s
+    transition: .3s ease-in-out
     align-items: center
     @include index.fontStyle(14px, 600)
     padding: .6rem
@@ -47,7 +47,7 @@
         button:nth-child(2)
             background-color: index.$primary
             width: 70%
-            transition: .3s
+            transition: .3s ease-in-out
             color: white
 
         button:hover:nth-child(2)

@@ -4,7 +4,7 @@ import { DELETE } from "../../../../../core/services/delete";
 import { GET } from "../../../../../core/services/get";
 import RoutineRadio from "../../cards/card-routine-radio/routine_radio";
 import { POST } from "../../../../../core/services/post-auth";
-
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 interface GroupRoutineRecord {
   personId: string | unknown;
@@ -106,29 +106,37 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
 
   return (
     <div className={style.group_routine_container}>
-      <div className={style.group_routine_options}>
-        {routines.length > 1 && (
-          <button onClick={handleClickDelete}>
-            {deleting ? (
-              <i className="fi fi-rs-x"></i>
-            ) : (
-              <i className="fi fi-rs-trash"></i>
-            )}
-          </button>
-        )}
-        {routines.length < 5 && (
-          <button
-            className={style.createRoutine}
-            onClick={handleClickCreate}
-            disabled={loading}
-          >
-            <i className="fi fi-rs-plus"></i>
-          </button>
-        )}
+      <div className={style.header_routine_options}>
+        <h1>Routines:</h1>
+        <div className={style.group_routine_options}>
+          {routines.length > 1 && (
+            <button onClick={handleClickDelete}>
+              {deleting ? (
+                <i className="fi fi-rs-x"></i>
+              ) : (
+                <i className="fi fi-rs-trash"></i>
+              )}
+            </button>
+          )}
+          {routines.length < 5 && (
+            <button
+              className={style.createRoutine}
+              onClick={handleClickCreate}
+              disabled={loading}
+            >
+              <i className="fi fi-rs-plus"></i>
+            </button>
+          )}
+        </div>
       </div>
       <div className={style.group_routine}>
         {loading ? (
-          <p>Carregando rotinas...</p>
+          <DotLottieReact
+            className={style.animated_Icon}
+            src="https://lottie.host/dc467656-77ec-48df-a597-f3936ab89e78/UpBTTawhrL.lottie"
+            loop
+            autoplay
+          />
         ) : routines.length > 0 ? (
           routines.map((routine) => (
             <RoutineRadio

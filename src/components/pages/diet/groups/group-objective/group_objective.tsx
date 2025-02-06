@@ -1,4 +1,4 @@
-import DietRadio from "../../cards/card-ratio/diet_radio";
+import DietCheckbox from "../../cards/card-checkbox/diet_checkbox";
 import style from "../group_diet.module.sass";
 
 interface GroupProps {
@@ -21,12 +21,11 @@ const GroupObejective: React.FC<GroupProps> = ({ onChange }) => {
   return (
     <div className={style.group_diet}>
       {objective.map((objective) => (
-        <DietRadio
+        <DietCheckbox
           key={objective.id}
           name={objective.name}
           id={objective.id}
           onChange={handleRadioChange}
-          checked={objective.id === "ENDURANCE"}
           type={"objective"}
         />
       ))}

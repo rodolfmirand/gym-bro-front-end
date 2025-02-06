@@ -5,9 +5,8 @@ import { useRef } from "react";
 interface CardHomeProps {
   link: string;
   text: string;
-  url: string;
 }
-const CardHome: React.FC<CardHomeProps> = ({ link, text, url }) => {
+const CardHome: React.FC<CardHomeProps> = ({ link, text }) => {
   const video = useRef<HTMLVideoElement>(null);
   const handleMouseEnter = () => {
     video.current?.play();
@@ -28,7 +27,7 @@ const CardHome: React.FC<CardHomeProps> = ({ link, text, url }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <video ref={video} src={url} muted loop></video>
+       
         <div className={style.text}>
           <h3>{text}</h3>
           <i className="fi fi-rs-arrow-alt-right"></i>

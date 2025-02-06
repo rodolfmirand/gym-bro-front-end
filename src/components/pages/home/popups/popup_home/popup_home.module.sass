@@ -10,9 +10,17 @@
     &_item:nth-child(1)
         display: flex
         gap: .6rem
-        transition: .3s
+        transition: .3s ease-in-out
         align-items: center
         @include index.fontStyle(14px, 600)
         padding: .6rem
         width: 100%
         cursor: pointer
+
+    &_item:nth-child(1):hover
+        color: index.$blue
+        border-radius: 8px
+        background-color: #363a3f69
+
+        i
+            color: index.$blue
