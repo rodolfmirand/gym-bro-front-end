@@ -15,25 +15,28 @@ export default function Diet() {
     diet: string;
     dietaryRestrictions: string[];
   }>({
-    objectives: [],
-    diet: "vegan",
+    diet: "VEGAN",
     dietaryRestrictions: [],
+    objectives: [],
   });
 
   useEffect(() => {
     if (message) {
-      let index = -1;
-
+      let index = 0;
+      setDisplayedMessage("");
+ 
+      
       const interval = setInterval(() => {
         setDisplayedMessage((prev) => prev + message[index]);
         index++;
         if (index >= message.length) {
           clearInterval(interval);
         }
-      }, 50);
+        
+      }, 0);
       return () => clearInterval(interval);
+     
     }
-    setDisplayedMessage("");
   }, [message]);
 
   const handleChange = (field: string, value: string) => {
@@ -56,7 +59,7 @@ export default function Diet() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setMessage(null);
+    setMessage("");
     try {
       const result = await POST(
         `http://localhost:8080/gymbro/gemini/${localStorage.getItem("userId")}`,
@@ -64,10 +67,17 @@ export default function Diet() {
       );
 
       if (result.success) {
-        setMessage(result.message ?? "An unexpected error occurred.");
+        const formattedMessage =
+          `CCalorias Estimadas: ${result.data.estimatedCalories}\n\n` +
+          `Primeira refeição: ${result.data.firstMeal}\n\n` +
+          `Segunda refeição: ${result.data.secondMeal}\n\n` +
+          (result.data.thirdMeal ? `Terceira refeição: ${result.data.thirdMeal}` : '');
+        setMessage(formattedMessage);
       } else {
-        console.error("Erro ao registrar exercicio: ", result.message);
-        setMessage(result.message ?? "An unexpected error occurred.");
+        console.error("Erro ao registrar dieta: ", result.message);
+        setMessage(result.message ?? "");
+        console.log(form);
+        
       }
     } finally {
       setLoading(false);
@@ -81,7 +91,7 @@ export default function Diet() {
       </div>
       {message ? (
         <div className={style.message}>
-          <p>{displayedMessage}</p>
+          <pre>{displayedMessage}</pre>
         </div>
       ) : (
         <div className={style.container_options}>
@@ -108,7 +118,6 @@ export default function Diet() {
         onClick={handleSubmit}
         disabled={loading}
       >
-        {" "}
         {loading ? "Creating..." : "Create"}
       </button>
     </div>

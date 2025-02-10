@@ -1,30 +1,32 @@
 import React from "react";
 import style from "./input.module.sass";
-import InputMask from 'react-input-mask';
+import DateInputMask from "../input-date/input-date";
+
 
 interface InputProps {
   label: string;
   placeholder: string;
   type: string;
   iconClass: string;
-  color: string
+  color: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField: React.FC<InputProps> = ({ label, placeholder, type, iconClass, onChange, color }) => {
+const InputField: React.FC<InputProps> = ({
+  label,
+  placeholder,
+  type,
+  iconClass,
+  onChange,
+  color,
+}) => {
   return (
     <label htmlFor={label}>
       {label}:
       <div className={style.input_body} style={{ backgroundColor: color }}>
         <i className={iconClass}></i>
         {type === "data" ? (
-          <InputMask
-            mask="99/99/9999"
-            placeholder="__/__/____"
-            id={label}
-            onChange={onChange}
-            required
-          />
+          <DateInputMask id={label} onChange={onChange} />
         ) : (
           <input
             type={type}
@@ -34,7 +36,6 @@ const InputField: React.FC<InputProps> = ({ label, placeholder, type, iconClass,
             required
           />
         )}
-
       </div>
     </label>
   );
