@@ -72,7 +72,7 @@ export default function Register() {
             <div className={style.same_place}>
               <InputField
                 label="name"
-                placeholder="Eduardo Octávio"
+                placeholder="Your name"
                 type="text"
                 iconClass="fi fi-rs-dumbbell-weightlifting"
                 onChange={handleChange} color={""} />
@@ -97,20 +97,20 @@ export default function Register() {
               onChange={handleChange} color={""} />
             <InputField
               label="birthDate"
-              placeholder="22/01/2005"
+              placeholder="__/__/____"
               type="data"
               iconClass="fi fi-rs-cake-birthday "
               onChange={handleChange} color={""} />
             <div className={style.same_place}>
               <InputField
                 label="weight"
-                placeholder="83 Kg"
+                placeholder="KG"
                 type="number"
                 iconClass="fi fi-rs-scale"
                 onChange={handleChange} color={""} />
               <InputField
                 label="height"
-                placeholder="184 Cm"
+                placeholder="CM"
                 type="number"
                 iconClass="fi fi-rs-measuring-tape"
                 onChange={handleChange} color={""} />

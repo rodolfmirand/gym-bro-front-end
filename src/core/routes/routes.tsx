@@ -18,10 +18,10 @@ export default function RoutesControll() {
         <Route path="" element={<Account />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route index element={<Navigate to="/login" />} />
         </Route>
 
         <Route path="" element={<Main />}>
-          <Route index element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/record" element={<Record />} />
           <Route path="/exercise" element={<Create />}>

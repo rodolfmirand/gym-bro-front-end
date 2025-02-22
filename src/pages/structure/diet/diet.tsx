@@ -24,18 +24,15 @@ export default function Diet() {
     if (message) {
       let index = 0;
       setDisplayedMessage("");
- 
-      
+
       const interval = setInterval(() => {
         setDisplayedMessage((prev) => prev + message[index]);
         index++;
         if (index >= message.length) {
           clearInterval(interval);
         }
-        
       }, 0);
       return () => clearInterval(interval);
-     
     }
   }, [message]);
 
@@ -68,20 +65,31 @@ export default function Diet() {
 
       if (result.success) {
         const formattedMessage =
-          `CCalorias Estimadas: ${result.data.estimatedCalories}\n\n` +
+          `Calorias Estimadas: ${result.data.estimatedCalories}\n\n` +
           `Primeira refeição: ${result.data.firstMeal}\n\n` +
           `Segunda refeição: ${result.data.secondMeal}\n\n` +
-          (result.data.thirdMeal ? `Terceira refeição: ${result.data.thirdMeal}` : '');
+          (result.data.thirdMeal
+            ? `Terceira refeição: ${result.data.thirdMeal}`
+            : "");
         setMessage(formattedMessage);
       } else {
         console.error("Erro ao registrar dieta: ", result.message);
         setMessage(result.message ?? "");
         console.log(form);
-        
       }
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleReset = () => {
+    setMessage(null);
+    setDisplayedMessage("");
+    setForm({
+      diet: "VEGAN",
+      dietaryRestrictions: [],
+      objectives: [],
+    });
   };
 
   return (
@@ -90,36 +98,45 @@ export default function Diet() {
         <h1>Build your diet</h1>
       </div>
       {message ? (
-        <div className={style.message}>
-          <pre>{displayedMessage}</pre>
-        </div>
+        <>
+          <div className={style.message}>
+            <pre>{displayedMessage}</pre>
+          </div>
+          <button className={style.submit} onClick={handleReset}>
+            Create a new diet
+          </button>
+        </>
       ) : (
-        <div className={style.container_options}>
-          <div className={style.container_groups}>
-            <h3>Select the objective: </h3>
-            <GroupObejective
-              onChange={(value) => handleChange("objectives", value)}
-            />
+        <>
+          <div className={style.container_options}>
+            <div className={style.container_groups}>
+              <h3>Select the objective: </h3>
+              <GroupObejective
+                onChange={(value) => handleChange("objectives", value)}
+              />
+            </div>
+            <div className={style.container_groups}>
+              <h3>Select the specific diet: </h3>
+              <GroupSpecific
+                onChange={(value) => handleChange("diet", value)}
+              />
+            </div>
+            <div className={style.container_groups}>
+              <h3>Select the dietary restrictions: </h3>
+              <GroupRestrictions
+                onChange={(value) => handleChange("dietaryRestrictions", value)}
+              />
+            </div>
           </div>
-          <div className={style.container_groups}>
-            <h3>Select the specific diet: </h3>
-            <GroupSpecific onChange={(value) => handleChange("diet", value)} />
-          </div>
-          <div className={style.container_groups}>
-            <h3>Select the dietary restrictions: </h3>
-            <GroupRestrictions
-              onChange={(value) => handleChange("dietaryRestrictions", value)}
-            />
-          </div>
-        </div>
+          <button
+            className={style.submit}
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? "Creating..." : "Create"}
+          </button>
+        </>
       )}
-      <button
-        className={style.submit}
-        onClick={handleSubmit}
-        disabled={loading}
-      >
-        {loading ? "Creating..." : "Create"}
-      </button>
     </div>
   );
 }
