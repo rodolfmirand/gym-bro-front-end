@@ -65,13 +65,13 @@ export default function Diet() {
 
       if (result.success) {
         const formattedMessage =
-          `Calorias Estimadas: ${result.data.estimatedCalories}\n\n` +
-          `Primeira refeição: ${result.data.firstMeal}\n\n` +
-          `Segunda refeição: ${result.data.secondMeal}\n\n` +
+          `CCalorias Estimadas: 🔥 ${result.data.estimatedCalories}\n\n` +
+          `Primeira refeição: 🥗 ${result.data.firstMeal}\n\n` +
+          `Segunda refeição: 🥙 ${result.data.secondMeal}\n\n` +
           (result.data.thirdMeal
-            ? `Terceira refeição: ${result.data.thirdMeal}`
+            ? `Terceira refeição: 🌯 ${result.data.thirdMeal}`
             : "");
-        setMessage(formattedMessage);
+        setMessage(formattedMessage.replace(/\*/g, "\n🥐"));
       } else {
         console.error("Erro ao registrar dieta: ", result.message);
         setMessage(result.message ?? "");
