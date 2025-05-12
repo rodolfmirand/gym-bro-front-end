@@ -37,7 +37,7 @@ export default function PopUpEdit({
     const fetchRoutines = async () => {
       try {
         const result = await GET(
-          `http://localhost:8080/gymbro/exercise/${exerciseId}`
+          `https://gym-bro-ysay.onrender.com/gymbro/exercise/${exerciseId}`
         );
         if (result.success) {
           if (exerciseType === "cardio") {
@@ -62,7 +62,7 @@ export default function PopUpEdit({
     const formUpdate = exerciseType === "cardio" ? formCardio : formExercise;
     console.log("Dados enviados:", formUpdate);
     const result = await UPDATE(
-      `http://localhost:8080/gymbro/exercise/${exerciseId}`,
+      `https://gym-bro-ysay.onrender.com/gymbro/exercise/${exerciseId}`,
       formUpdate,
       localStorage.getItem("token")
     );

@@ -15,7 +15,7 @@ export default function PopUpDelete({
 }: PopUpDeleteProps) {
   const handleDelete = async () => {
     const result = await DELETE(
-      `http://localhost:8080/gymbro/exercise/${exerciseId}`,
+      `https://gym-bro-ysay.onrender.com/gymbro/exercise/${exerciseId}`,
       localStorage.getItem("token")
     );
 

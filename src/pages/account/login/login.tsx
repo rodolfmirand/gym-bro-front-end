@@ -20,7 +20,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = await POST("http://localhost:8080/gymbro/auth/login", form);
+    const result = await POST("https://gym-bro-ysay.onrender.com/gymbro/auth/login", form);
 
     if (result.success) {
       localStorage.setItem("userId", result.data.person.id);

@@ -38,7 +38,7 @@ const GroupExercise: React.FC<GroupExerciseProps> = ({ dailyId }) => {
     const fetchRoutines = async () => {
       try {
         const result = await GET(
-          `http://localhost:8080/gymbro/daily/${dailyId}`
+          `https://gym-bro-ysay.onrender.com/gymbro/daily/${dailyId}`
         );
         if (result.success) {
           setExerciseBulding(result.data.bodybuildingExercises);

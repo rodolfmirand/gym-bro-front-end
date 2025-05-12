@@ -59,7 +59,7 @@ export default function Diet() {
     setMessage("");
     try {
       const result = await POST(
-        `http://localhost:8080/gymbro/gemini/${localStorage.getItem("userId")}`,
+        `https://gym-bro-ysay.onrender.com/gymbro/gemini/${localStorage.getItem("userId")}`,
         form
       );
 

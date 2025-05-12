@@ -23,7 +23,7 @@ const GroupRoutine: React.FC<GroupRoutineRecord> = ({
   const fetchRoutines = useCallback(async () => {
     try {
       const result = await GET(
-        `http://localhost:8080/gymbro/daily/findbyperson/${personId}`
+        `https://gym-bro-ysay.onrender.com/gymbro/daily/findbyperson/${personId}`
       );
 
       if (result.success) {
