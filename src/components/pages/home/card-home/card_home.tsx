@@ -5,6 +5,7 @@ import { useRef } from "react";
 interface CardHomeProps {
   link: string;
   text: string;
+  url: string;
 }
 const CardHome: React.FC<CardHomeProps> = ({ link, text }) => {
   const video = useRef<HTMLVideoElement>(null);
