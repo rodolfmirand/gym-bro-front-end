@@ -39,7 +39,7 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = await POST("http://localhost:8080/gymbro/person", form);
+    const result = await POST("https://gym-bro-ysay.onrender.com/gymbro/person", form);
 
     if (result.success) {
       navigate("/login");
