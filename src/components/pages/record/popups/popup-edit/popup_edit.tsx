@@ -219,7 +219,9 @@ export default function PopUpEdit({
       }
       nested
     >
-      {(close: () => void) => renderPopupContent(close)}
+      children={
+        ((close: () => void) => renderPopupContent(close)) as unknown as React.ReactNode
+      }
     </Popup>
   );
 }

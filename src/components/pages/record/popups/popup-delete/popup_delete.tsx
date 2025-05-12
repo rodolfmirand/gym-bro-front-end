@@ -66,9 +66,8 @@ export default function PopUpDelete({
           </button>
         }
         nested
-      >
-        {(close: () => void) => renderPopupContent(close)}
-      </Popup>
+        children={((close: () => void) => <>{renderPopupContent(close)}</>) as unknown as React.ReactNode} // 👈 aqui está o cast indireto
+      />
     </>
   );
 }
